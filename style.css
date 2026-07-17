@@ -2300,32 +2300,90 @@ input[type="password"]:focus {
 }
 
 /* 20. Responsive Adaptation (Media Queries) */
-@media (max-width: 1024px) {
-  .game-container-layout {
-    grid-template-columns: 1fr;
+
+/* Large Desktop Breakpoint (>= 1400px) */
+@media (min-width: 1400px) {
+  .content-wrapper {
+    max-width: 1360px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Intermediate Desktop Breakpoint (1200px - 1399px) */
+@media (max-width: 1399px) {
+  .content-wrapper {
+    max-width: 1140px;
+  }
+}
+
+/* Intermediate Laptop Breakpoint (992px - 1199px) */
+@media (max-width: 1199px) {
+  .content-wrapper {
+    max-width: 960px;
+  }
+  
+  .profile-layout {
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
   }
 
-  .game-settings-panel,
-  .game-logs-panel {
-    height: auto;
+  .admin-stats-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Tablet Landscape / Small Laptop (768px - 991px) */
+@media (max-width: 991px) {
+  .content-wrapper {
+    max-width: 720px;
+    padding-top: 90px;
+    padding-bottom: 30px;
   }
 
-  .move-history-scroll {
-    height: 180px;
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.5rem; }
+
+  .nav-container {
+    padding: 0 15px;
+  }
+  .nav-list {
+    gap: 15px;
+  }
+
+  .hero-section {
+    padding: 40px 20px;
   }
 
   .profile-layout {
     grid-template-columns: 1fr;
+    gap: 25px;
   }
 
-  .footer-container {
-    grid-template-columns: 1fr 1fr;
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .ttt-game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rps-game-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767px) {
   .content-wrapper {
+    max-width: 540px;
     padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .nav-toggle {
@@ -2342,8 +2400,8 @@ input[type="password"]:focus {
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--surface-border);
     flex-direction: column;
-    padding: 30px;
-    gap: 20px;
+    padding: 25px;
+    gap: 15px;
     transform: translateY(-110%);
     pointer-events: none;
     opacity: 0;
@@ -2361,13 +2419,13 @@ input[type="password"]:focus {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
   }
 
   .nav-actions {
     flex-direction: column;
     width: 100%;
-    gap: 15px;
+    gap: 12px;
   }
 
   .user-menu {
@@ -2384,7 +2442,7 @@ input[type="password"]:focus {
     top: 5px;
     right: auto;
     width: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
     box-shadow: none;
     opacity: 1;
     transform: none;
@@ -2396,75 +2454,155 @@ input[type="password"]:focus {
     display: flex;
   }
 
-  /* Form responsiveness */
   .form-row {
     grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.4rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .game-catalog-card {
-    flex-direction: column;
-  }
-
-  .game-catalog-image {
-    width: 100%;
-    min-height: 180px;
-  }
-
-  .dashboard-details {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
+    gap: 12px;
   }
 
   .games-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+  .dashboard-details {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .ttt-grid {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 8px;
+  }
+  .ttt-box {
+    font-size: 2.6rem;
+  }
+
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--surface-border);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
+  }
+  
+  .table {
+    white-space: nowrap;
+  }
+
+  .history-filter-bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  .history-filter-bar select, 
+  .history-filter-bar input,
+  .history-filter-bar button {
+    width: 100% !important;
+  }
+
+  .btn-full-mobile {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Large Mobile / Intermediate Breakpoint (400px - 575px) */
+@media (max-width: 575px) {
+  .content-wrapper {
+    padding-top: 75px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
   }
 
   .ttt-grid {
     grid-template-columns: repeat(3, 85px);
     grid-template-rows: repeat(3, 85px);
-    gap: 8px;
+    gap: 6px;
   }
-
   .ttt-box {
     font-size: 2.2rem;
   }
 
   .rps-choices-container {
-    gap: 10px;
+    gap: 12px;
+    justify-content: center;
+  }
+  .rps-choice-card {
+    width: 85px;
+    height: 105px;
+  }
+  .rps-choice-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-form button {
+    width: 100%;
+  }
+
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+  }
+}
+
+/* Small Mobile Breakpoint (< 400px) */
+@media (max-width: 399px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .ttt-grid {
+    grid-template-columns: repeat(3, 75px);
+    grid-template-rows: repeat(3, 75px);
+    gap: 5px;
+  }
+  .ttt-box {
+    font-size: 2rem;
   }
 
   .rps-choice-card {
-    width: 90px;
-    height: 110px;
+    width: 75px;
+    height: 95px;
   }
-
   .rps-choice-card img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
   }
 }
 
