@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameVerse - Play &bull; Compete &bull; Rise</title>
+  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Central Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- Toast Notification Overlay -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main Website Shell -->
+  <div class="app-layout">
+
+    <!-- Navbar (Loaded dynamically) -->
+    <header id="navbar-container"></header>
+
+    <!-- Main Dynamic Content Area (Views toggled via router.js) -->
+    <main class="content-wrapper">
+
+      <!-- Home Screen -->
+      <div id="home-view" class="view-section hide"></div>
+
+      <!-- Games List Screen -->
+      <div id="games-view" class="view-section hide"></div>
+
+      <!-- Tic Tac Toe Game Play Screen -->
+      <div id="game-ttt-view" class="view-section hide"></div>
+
+      <!-- Rock Paper Scissors Game Play Screen -->
+      <div id="game-rps-view" class="view-section hide"></div>
+
+      <!-- User Dashboard Screen -->
+      <div id="dashboard-view" class="view-section hide"></div>
+
+      <!-- Leaderboard Screen -->
+      <div id="leaderboard-view" class="view-section hide"></div>
+
+      <!-- Profile & Settings Screen -->
+      <div id="profile-view" class="view-section hide"></div>
+
+      <!-- Match History Screen -->
+      <div id="history-view" class="view-section hide"></div>
+
+      <!-- Admin Control Panel Screen -->
+      <div id="admin-view" class="view-section hide"></div>
+
+    </main>
+
+    <!-- Footer (Loaded dynamically) -->
+    <footer id="footer-container"></footer>
+
+  </div>
+
+  <!-- Authenticaton Modals Container (Loaded dynamically) -->
+  <div id="modals-container"></div>
+
+  <!-- Core App Controller Bootstrapper -->
+  <script type="module" src="./app.js"></script>
+</body>
+
+</html>

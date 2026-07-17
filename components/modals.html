@@ -1,0 +1,87 @@
+<!-- Login Modal -->
+<div id="login-modal" class="modal-backdrop hide">
+  <div class="modal-content glass">
+    <button class="modal-close" id="login-close-btn">&times;</button>
+    <div class="modal-header">
+      <h3>Welcome Back, <span class="text-gradient">Gamer</span></h3>
+      <p>Log in to access your dashboard, statistics, and leaderboards.</p>
+    </div>
+    <form id="login-form" class="modal-form">
+      <div class="form-group">
+        <label for="login-username"><i class="fas fa-user"></i> Username</label>
+        <input type="text" id="login-username" placeholder="Enter your username" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password"><i class="fas fa-lock"></i> Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+    <div class="modal-footer">
+      <p>Don't have an account? <a href="#" id="go-to-register">Register here</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register-modal" class="modal-backdrop hide">
+  <div class="modal-content glass">
+    <button class="modal-close" id="register-close-btn">&times;</button>
+    <div class="modal-header">
+      <h3>Join the <span class="text-gradient">Verse</span></h3>
+      <p>Create a player profile, track your performance, and rise the ranks.</p>
+    </div>
+    <form id="register-form" class="modal-form">
+      <div class="form-group">
+        <label for="register-username"><i class="fas fa-user"></i> Username</label>
+        <input type="text" id="register-username" placeholder="Choose a username" required minlength="3" maxlength="15">
+      </div>
+      <div class="form-group">
+        <label for="register-email"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="register-email" placeholder="gamer@gameverse.com" required>
+      </div>
+      <div class="form-group">
+        <label for="register-password"><i class="fas fa-lock"></i> Password</label>
+        <input type="password" id="register-password" placeholder="Min. 6 characters" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label for="register-confirm"><i class="fas fa-shield-alt"></i> Confirm Password</label>
+        <input type="password" id="register-confirm" placeholder="Re-type password" required>
+      </div>
+      
+      <!-- Avatar Picker -->
+      <div class="form-group">
+        <label><i class="fas fa-user-circle"></i> Choose Profile Avatar</label>
+        <div class="avatar-picker" id="register-avatar-picker">
+          <div class="avatar-option selected" data-avatar="1">
+            <img src="./assets/avatars/avatar1.svg" alt="Avatar 1">
+          </div>
+          <div class="avatar-option" data-avatar="2">
+            <img src="./assets/avatars/avatar2.svg" alt="Avatar 2">
+          </div>
+          <div class="avatar-option" data-avatar="3">
+            <img src="./assets/avatars/avatar3.svg" alt="Avatar 3">
+          </div>
+          <div class="avatar-option" data-avatar="4">
+            <img src="./assets/avatars/avatar4.svg" alt="Avatar 4">
+          </div>
+          <div class="avatar-option" data-avatar="5">
+            <img src="./assets/avatars/avatar5.svg" alt="Avatar 5">
+          </div>
+          <div class="avatar-option" data-avatar="6">
+            <img src="./assets/avatars/avatar6.svg" alt="Avatar 6">
+          </div>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-secondary btn-block">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </form>
+    <div class="modal-footer">
+      <p>Already have an account? <a href="#" id="go-to-login">Log in here</a></p>
+    </div>
+  </div>
+</div>

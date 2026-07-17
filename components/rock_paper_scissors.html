@@ -1,0 +1,144 @@
+<div class="game-container-layout">
+  <!-- Game Settings Side Panel -->
+  <div class="game-settings-panel glass">
+    <div class="game-meta-header">
+      <a href="#/games" class="back-link"><i class="fas fa-arrow-left"></i> Back to Arcade</a>
+      <h3>✊ Rock Paper Scissors</h3>
+      <p class="text-muted">Rock beats scissors, Scissors beat paper, Paper beats rock.</p>
+    </div>
+    
+    <hr class="panel-divider">
+
+    <!-- Match Series Format -->
+    <div class="setting-group">
+      <label class="setting-label">Match Format</label>
+      <div class="btn-toggle-group" id="rps-format-toggle">
+        <button class="btn-toggle active" data-format="1">Single Round</button>
+        <button class="btn-toggle" data-format="3">Best of 3</button>
+        <button class="btn-toggle" data-format="5">Best of 5</button>
+      </div>
+    </div>
+
+    <!-- Difficulty Toggles -->
+    <div class="setting-group">
+      <label class="setting-label">AI Heuristic Difficulty</label>
+      <div class="difficulty-tabs">
+        <button class="diff-tab active" data-diff="easy">Easy</button>
+        <button class="diff-tab" data-diff="medium">Medium</button>
+        <button class="diff-tab" data-diff="hard">Hard (Adaptive)</button>
+      </div>
+    </div>
+
+    <hr class="panel-divider">
+
+    <!-- Scoreboard -->
+    <div class="game-scoreboard">
+      <div class="score-item">
+        <span class="score-label">You</span>
+        <span class="score-value text-primary" id="rps-score-user">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Computer</span>
+        <span class="score-value text-accent" id="rps-score-comp">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Draws</span>
+        <span class="score-value text-muted" id="rps-score-draws">0</span>
+      </div>
+    </div>
+    
+    <div class="series-status-hud mt-2 text-center text-muted" id="rps-series-hud">
+      Series Status: Single Round Mode
+    </div>
+
+    <button id="rps-restart-btn" class="btn btn-outline btn-block mt-4">
+      <i class="fas fa-undo"></i> Reset Series Score
+    </button>
+  </div>
+
+  <!-- Game Play Core -->
+  <div class="game-play-core glass text-center">
+    <!-- Series Winner Overlay -->
+    <div class="ttt-msg-overlay hide" id="rps-overlay">
+      <div class="overlay-content glass text-center">
+        <h2 class="text-gradient" style="font-size: 2rem; margin-bottom: 10px; font-family: var(--font-family-title); font-weight: 800;">🏆 Game Over</h2>
+        <h3 id="rps-overlay-title" class="font-bold" style="margin-bottom: 8px; font-size: 1.3rem;">Series Complete!</h3>
+        <p id="rps-overlay-desc" class="text-muted" style="margin-bottom: 24px;">You won the series 2 - 1!</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 280px; margin: 0 auto;">
+          <button id="rps-modal-play-again" class="btn btn-primary btn-block">
+            <i class="fas fa-redo"></i> Play Again
+          </button>
+          <a href="#/games" class="btn btn-outline btn-block text-center" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; text-decoration: none;">
+            <i class="fas fa-gamepad"></i> Choose Another Game
+          </a>
+          <a href="#/dashboard" class="btn btn-secondary btn-block text-center" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; text-decoration: none;">
+            <i class="fas fa-columns"></i> Go to Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-board-wrapper">
+      <h2 class="game-hud-title text-gradient">ROCK PAPER SCISSORS</h2>
+      
+      <!-- Choices Grid -->
+      <div class="rps-choices-container">
+        <div class="rps-choice-card" id="rps-choice-rock" data-choice="rock">
+          <img src="./games/rock_paper_scissors/images/rock.png" alt="Rock">
+          <span>Rock</span>
+        </div>
+        <div class="rps-choice-card" id="rps-choice-paper" data-choice="paper">
+          <img src="./games/rock_paper_scissors/images/paper.png" alt="Paper">
+          <span>Paper</span>
+        </div>
+        <div class="rps-choice-card" id="rps-choice-scissors" data-choice="scissors">
+          <img src="./games/rock_paper_scissors/images/scissors.png" alt="Scissors">
+          <span>Scissors</span>
+        </div>
+      </div>
+
+      <!-- Live Battle Arena Display -->
+      <div class="rps-arena mt-6">
+        <div class="arena-fighter">
+          <span class="fighter-label">Your Pick</span>
+          <div class="fighter-choice-box" id="rps-user-pick-display">?</div>
+        </div>
+        <div class="arena-vs">VS</div>
+        <div class="arena-fighter">
+          <span class="fighter-label">Computer Pick</span>
+          <div class="fighter-choice-box" id="rps-comp-pick-display">?</div>
+        </div>
+      </div>
+      
+      <div class="hud-status mt-6">
+        <p id="rps-hud-msg" class="glass-inline-msg">Make your move to start round!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Logs Right Panel -->
+  <div class="game-logs-panel glass">
+    <div class="panel-header text-center">
+      <h3><i class="fas fa-fire text-accent animate-pulse"></i> Streaks & Logs</h3>
+    </div>
+    
+    <div class="streak-stats-row">
+      <div class="streak-stat-box">
+        <span class="lbl">Current Streak</span>
+        <strong id="rps-streak-current" class="text-accent">0</strong>
+      </div>
+      <div class="streak-stat-box">
+        <span class="lbl">Best Streak</span>
+        <strong id="rps-streak-best" class="text-gradient">0</strong>
+      </div>
+    </div>
+    
+    <hr class="panel-divider" style="margin: 1rem 0;">
+
+    <h4 class="px-4 text-left"><i class="fas fa-list"></i> Series Logs</h4>
+    <div class="move-history-scroll mt-2" id="rps-rounds-log">
+      <p class="text-muted text-center pt-8">No rounds played in this series.</p>
+    </div>
+  </div>
+</div>

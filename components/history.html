@@ -1,0 +1,63 @@
+<div class="section-header text-center">
+  <span class="section-tag">Log Archives</span>
+  <h2>Match <span class="text-gradient">History</span></h2>
+  <p>Track your statistics and progress in all your matches.</p>
+</div>
+
+<!-- Filters Panel -->
+<div class="filters-panel glass">
+  <div class="filter-group">
+    <label for="filter-game"><i class="fas fa-gamepad"></i> Game</label>
+    <select id="filter-game" class="form-input">
+      <option value="all">All Games</option>
+      <option value="Tic Tac Toe">Tic Tac Toe</option>
+      <option value="Rock Paper Scissors">Rock Paper Scissors</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="filter-result"><i class="fas fa-flag"></i> Outcome</label>
+    <select id="filter-result" class="form-input">
+      <option value="all">All Outcomes</option>
+      <option value="Win">Wins Only</option>
+      <option value="Loss">Losses Only</option>
+      <option value="Draw">Draws Only</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="filter-sort"><i class="fas fa-sort-amount-down"></i> Date Sort</label>
+    <select id="filter-sort" class="form-input">
+      <option value="desc">Newest First</option>
+      <option value="asc">Oldest First</option>
+    </select>
+  </div>
+
+  <div class="filter-group filter-actions">
+    <button id="clear-filters-btn" class="btn btn-outline btn-block">
+      <i class="fas fa-eraser"></i> Clear Filters
+    </button>
+  </div>
+</div>
+
+<!-- History Listing -->
+<div class="history-list-container glass">
+  <div class="table-responsive">
+    <table class="table history-table">
+      <thead>
+        <tr>
+          <th>Game</th>
+          <th class="text-center">Outcome</th>
+          <th class="text-center">Difficulty</th>
+          <th class="text-center">Details</th>
+          <th class="text-center">Date & Time</th>
+        </tr>
+      </thead>
+      <tbody id="history-rows">
+        <tr>
+          <td colspan="5" class="text-center text-muted">No matches played matching these filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

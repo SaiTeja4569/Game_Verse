@@ -1,0 +1,113 @@
+<div class="game-container-layout">
+  <!-- Game Settings Side Panel -->
+  <div class="game-settings-panel glass">
+    <div class="game-meta-header">
+      <a href="#/games" class="back-link"><i class="fas fa-arrow-left"></i> Back to Arcade</a>
+      <h3>🎲 Tic Tac Toe</h3>
+      <p class="text-muted">Align three matching markers in a row, column, or diagonal.</p>
+    </div>
+    
+    <hr class="panel-divider">
+
+    <!-- Mode Selector -->
+    <div class="setting-group">
+      <label class="setting-label">Opponent Mode</label>
+      <div class="btn-toggle-group" id="ttt-mode-toggle">
+        <button class="btn-toggle active" data-mode="pvc"><i class="fas fa-robot"></i> vs Computer</button>
+        <button class="btn-toggle" data-mode="pvp"><i class="fas fa-users"></i> vs Player 2</button>
+      </div>
+    </div>
+
+    <!-- Difficulty Toggles (only shown for PvC) -->
+    <div class="setting-group" id="ttt-difficulty-group">
+      <label class="setting-label">AI Difficulty</label>
+      <div class="difficulty-tabs">
+        <button class="diff-tab active" data-diff="easy">Easy</button>
+        <button class="diff-tab" data-diff="medium">Medium</button>
+        <button class="diff-tab" data-diff="hard">Hard (Perfect)</button>
+      </div>
+    </div>
+
+    <hr class="panel-divider">
+
+    <!-- Scoreboard -->
+    <div class="game-scoreboard">
+      <div class="score-item">
+        <span class="score-label" id="ttt-score-p1-label">You (X)</span>
+        <span class="score-value text-primary" id="ttt-score-p1">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label" id="ttt-score-p2-label">Computer (O)</span>
+        <span class="score-value text-accent" id="ttt-score-p2">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Draws</span>
+        <span class="score-value text-muted" id="ttt-score-draws">0</span>
+      </div>
+    </div>
+
+    <button id="ttt-restart-btn" class="btn btn-outline btn-block mt-4">
+      <i class="fas fa-undo"></i> Reset Scoreboard
+    </button>
+  </div>
+
+  <!-- Game Play Core -->
+  <div class="game-play-core glass text-center">
+    <!-- Winner/Msg Banner Overlay -->
+    <div class="ttt-msg-overlay hide" id="ttt-overlay">
+      <div class="overlay-content glass text-center">
+        <h2 class="text-gradient" style="font-size: 2rem; margin-bottom: 10px; font-family: var(--font-family-title); font-weight: 800;">🏆 Game Over</h2>
+        <h3 id="ttt-overlay-title" class="font-bold" style="margin-bottom: 8px; font-size: 1.3rem;">Congratulations!</h3>
+        <p id="ttt-overlay-desc" class="text-muted" style="margin-bottom: 24px;">Player X is the Winner</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 280px; margin: 0 auto;">
+          <button id="ttt-modal-play-again" class="btn btn-primary btn-block">
+            <i class="fas fa-redo"></i> Play Again
+          </button>
+          <a href="#/games" class="btn btn-outline btn-block text-center" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; text-decoration: none;">
+            <i class="fas fa-gamepad"></i> Choose Another Game
+          </a>
+          <a href="#/dashboard" class="btn btn-secondary btn-block text-center" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; text-decoration: none;">
+            <i class="fas fa-columns"></i> Go to Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-board-wrapper">
+      <h2 class="game-hud-title text-gradient">TIC TAC TOE</h2>
+      
+      <div class="ttt-board-container">
+        <div class="ttt-grid">
+          <button class="ttt-box" data-index="0"></button>
+          <button class="ttt-box" data-index="1"></button>
+          <button class="ttt-box" data-index="2"></button>
+          <button class="ttt-box" data-index="3"></button>
+          <button class="ttt-box" data-index="4"></button>
+          <button class="ttt-box" data-index="5"></button>
+          <button class="ttt-box" data-index="6"></button>
+          <button class="ttt-box" data-index="7"></button>
+          <button class="ttt-box" data-index="8"></button>
+        </div>
+      </div>
+      
+      <div class="hud-status mt-4">
+        <p id="ttt-hud-msg">Your Turn! Click a square</p>
+      </div>
+      
+      <button id="ttt-board-reset-btn" class="btn btn-secondary mt-2">
+        <i class="fas fa-redo-alt"></i> Clear Board
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Logs Right Panel -->
+  <div class="game-logs-panel glass">
+    <div class="panel-header">
+      <h3><i class="fas fa-list-ol"></i> Move History</h3>
+    </div>
+    <div class="move-history-scroll" id="ttt-move-history">
+      <p class="text-muted text-center pt-8">No moves made in this round.</p>
+    </div>
+  </div>
+</div>

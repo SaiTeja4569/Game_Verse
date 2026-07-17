@@ -1,0 +1,402 @@
+<div class="section-header text-center">
+  <span class="section-tag">System Control</span>
+  <h2>Administrator <span class="text-gradient">Dashboard</span></h2>
+  <p>Overview of game statistics, user registries, and data settings.</p>
+</div>
+
+<!-- Admin Tabs Navigation -->
+<div class="profile-tabs glass mb-4" style="margin-bottom: 25px; display: flex; flex-wrap: wrap; border-radius: var(--border-radius-md); padding: 6px; gap: 4px;">
+  <button class="admin-tab-btn profile-tab-btn active" data-tab="admin-overview-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-chart-line"></i> Overview</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-users-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-users-cog"></i> User Management</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-matches-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-history"></i> Match History</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-leaderboard-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-trophy"></i> Leaderboard Management</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-analytics-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-chart-bar"></i> Game Analytics</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-achievements-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-award"></i> Achievements</button>
+  <button class="admin-tab-btn profile-tab-btn" data-tab="admin-settings-panel" style="flex-grow: 1; padding: 12px 16px; background: transparent; border: none; color: var(--text-muted); font-family: var(--font-family-title); font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: var(--border-radius-sm); transition: var(--transition-smooth);"><i class="fas fa-cogs"></i> System Settings</button>
+</div>
+
+<div class="admin-details">
+  <!-- 1. Overview Panel -->
+  <div class="details-panel glass admin-overview-panel" id="admin-overview-panel">
+    <div class="panel-header">
+      <h3><i class="fas fa-chart-line text-primary"></i> Platform Overview</h3>
+      <p class="text-muted" style="font-size: 0.85rem;">Global performance and activity indicators.</p>
+    </div>
+    
+    <div class="admin-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px;">
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Players</span>
+          <div class="stat-card-icon text-primary"><i class="fas fa-users"></i></div>
+        </div>
+        <div class="stat-card-value" id="admin-stat-users">0</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Active Users</span>
+          <div class="stat-card-icon text-success"><i class="fas fa-user-check"></i></div>
+        </div>
+        <div class="stat-card-value text-success" id="admin-stat-active-users">0</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Disabled Accounts</span>
+          <div class="stat-card-icon text-danger"><i class="fas fa-user-slash"></i></div>
+        </div>
+        <div class="stat-card-value text-danger" id="admin-stat-disabled-users">0</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Administrators</span>
+          <div class="stat-card-icon text-accent"><i class="fas fa-user-shield"></i></div>
+        </div>
+        <div class="stat-card-value text-accent" id="admin-stat-admins">0</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Matches Played</span>
+          <div class="stat-card-icon text-secondary"><i class="fas fa-gamepad"></i></div>
+        </div>
+        <div class="stat-card-value" id="admin-stat-matches">0</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Games Available</span>
+          <div class="stat-card-icon text-info"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="stat-card-value text-info" id="admin-stat-games-count">2</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Most Played Game</span>
+          <div class="stat-card-icon text-accent"><i class="fas fa-fire"></i></div>
+        </div>
+        <div class="stat-card-value" style="font-size: 1.3rem;" id="admin-stat-top-game">None</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-card-header">
+          <span class="stat-card-title">Top Player</span>
+          <div class="stat-card-icon text-success"><i class="fas fa-crown"></i></div>
+        </div>
+        <div class="stat-card-value text-success" style="font-size: 1.3rem;" id="admin-stat-top-player">None</div>
+      </div>
+    </div>
+
+    <!-- Administration Table inside Overview -->
+    <div class="glass mb-4" style="padding: 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default); margin-bottom: 25px;">
+      <h4 style="margin-top:0; margin-bottom:15px; display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-user-shield text-accent"></i> System Administrators
+      </h4>
+      <div class="table-responsive">
+        <table class="table" style="font-size: 0.85rem;">
+          <thead>
+            <tr>
+              <th>Administrator</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th class="text-center">System Access</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Created Date</th>
+              <th class="text-right">Last Login</th>
+            </tr>
+          </thead>
+          <tbody id="admin-overview-admins-list">
+            <!-- Dynamically populated admin list -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+      <!-- Recent Users (Overview) -->
+      <div class="glass" style="padding: 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default);">
+        <h4 style="margin-top:0; margin-bottom:15px;"><i class="fas fa-user-plus text-primary" style="margin-right:8px;"></i> New Users</h4>
+        <div class="table-responsive">
+          <table class="table" style="font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th class="text-right">Joined</th>
+              </tr>
+            </thead>
+            <tbody id="admin-overview-new-users">
+              <tr>
+                <td colspan="3" class="text-center text-muted">No users found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Recent Matches (Overview) -->
+      <div class="glass" style="padding: 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default);">
+        <h4 style="margin-top:0; margin-bottom:15px;"><i class="fas fa-history text-secondary" style="margin-right:8px;"></i> Recent Matches</h4>
+        <div class="table-responsive">
+          <table class="table" style="font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Game</th>
+                <th>Result</th>
+                <th class="text-right">Time</th>
+              </tr>
+            </thead>
+            <tbody id="admin-overview-recent-matches">
+              <tr>
+                <td colspan="4" class="text-center text-muted">No matches recorded yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. User Management Panel -->
+  <div class="details-panel glass admin-users-panel hide" id="admin-users-panel">
+    <div class="panel-header admin-users-header" style="flex-wrap: wrap; gap: 15px;">
+      <div>
+        <h3><i class="fas fa-users-cog"></i> User Management</h3>
+        <p class="text-muted" style="font-size: 0.85rem; margin: 4px 0 0 0;">Inspect, delete, disable, or reset statistics of player profiles.</p>
+      </div>
+      <div class="search-box" style="display:flex; gap:10px; flex-grow: 1; max-width: 500px;">
+        <div style="position:relative; flex-grow:1;">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="admin-search-users" placeholder="Search by username or email...">
+        </div>
+        <select id="admin-filter-users-status" class="glass" style="border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:var(--text-color); background:var(--surface-bg); padding:0 10px; height:42px; outline:none; cursor:pointer;">
+          <option value="all">All Statuses</option>
+          <option value="active">Active</option>
+          <option value="disabled">Disabled</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table admin-table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th class="text-center">Joined Date</th>
+            <th class="text-center">Matches</th>
+            <th class="text-center">Wins</th>
+            <th class="text-center">Status</th>
+            <th class="text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="admin-users-rows">
+          <tr>
+            <td colspan="7" class="text-center text-muted">No users found. Try seeding demo data!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. Match History Panel -->
+  <div class="details-panel glass admin-matches-panel hide" id="admin-matches-panel">
+    <div class="panel-header" style="flex-direction: column; align-items: stretch; gap: 15px;">
+      <div>
+        <h3><i class="fas fa-history text-secondary"></i> Complete Match History</h3>
+        <p class="text-muted" style="font-size: 0.85rem; margin: 4px 0 0 0;">Global match logs across all registered players.</p>
+      </div>
+      
+      <!-- Filters and Sorting Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+        <div>
+          <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Player Search</label>
+          <input type="text" id="admin-match-filter-user" placeholder="Username..." class="glass" style="width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: var(--text-color); font-size: 0.85rem; background: var(--surface-bg);">
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Game</label>
+          <select id="admin-match-filter-game" class="glass" style="width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: var(--text-color); font-size: 0.85rem; background: var(--surface-bg);">
+            <option value="all">All Games</option>
+            <option value="Tic Tac Toe">Tic Tac Toe</option>
+            <option value="Rock Paper Scissors">Rock Paper Scissors</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Difficulty</label>
+          <select id="admin-match-filter-diff" class="glass" style="width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: var(--text-color); font-size: 0.85rem; background: var(--surface-bg);">
+            <option value="all">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Result</label>
+          <select id="admin-match-filter-result" class="glass" style="width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: var(--text-color); font-size: 0.85rem; background: var(--surface-bg);">
+            <option value="all">All Results</option>
+            <option value="Win">Win</option>
+            <option value="Loss">Loss</option>
+            <option value="Draw">Draw</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Sort By Date</label>
+          <select id="admin-match-sort" class="glass" style="width: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: var(--text-color); font-size: 0.85rem; background: var(--surface-bg);">
+            <option value="desc">Newest First</option>
+            <option value="asc">Oldest First</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Game</th>
+            <th>Result</th>
+            <th>Difficulty</th>
+            <th>Date & Time</th>
+          </tr>
+        </thead>
+        <tbody id="admin-matches-rows">
+          <tr>
+            <td colspan="5" class="text-center text-muted">No matches recorded yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 4. Leaderboard Rankings Panel -->
+  <div class="details-panel glass admin-leaderboard-panel hide" id="admin-leaderboard-panel">
+    <div class="panel-header" style="flex-wrap: wrap; gap: 15px;">
+      <div>
+        <h3><i class="fas fa-crown text-warning"></i> Leaderboard Management</h3>
+        <p class="text-muted" style="font-size: 0.85rem; margin: 4px 0 0 0;">View global rankings, track player statistics, and reset leaderboard data.</p>
+      </div>
+      <button id="admin-reset-leaderboard-btn" class="btn btn-warning btn-sm"><i class="fas fa-trash-alt"></i> Reset Leaderboard</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th class="text-center">Matches</th>
+            <th class="text-center">Wins</th>
+            <th class="text-center">Points</th>
+            <th class="text-center">Win Rate</th>
+          </tr>
+        </thead>
+        <tbody id="admin-leaderboard-rows">
+          <tr>
+            <td colspan="6" class="text-center text-muted">No players ranked yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Game Analytics Panel -->
+  <div class="details-panel glass admin-analytics-panel hide" id="admin-analytics-panel">
+    <div class="panel-header">
+      <h3><i class="fas fa-chart-bar text-accent"></i> Game Analytics</h3>
+      <p class="text-muted" style="font-size: 0.85rem;">Dedicated performance overview metrics for individual game modules.</p>
+    </div>
+    <div id="admin-analytics-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 15px;">
+      <!-- Dynamic game analytics card output -->
+    </div>
+  </div>
+
+  <!-- 6. Achievements Panel -->
+  <div class="details-panel glass admin-achievements-panel hide" id="admin-achievements-panel">
+    <div class="panel-header">
+      <h3><i class="fas fa-award text-accent"></i> Achievements Registry</h3>
+      <p class="text-muted" style="font-size: 0.85rem;">Platform achievements list, total unlocks, and player progress indicators.</p>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Trophy Icon</th>
+            <th>Achievement Title / Description</th>
+            <th class="text-center">Unlocked By</th>
+            <th>Unlocked Players Progress</th>
+          </tr>
+        </thead>
+        <tbody id="admin-achievements-rows">
+          <tr>
+            <td colspan="4" class="text-center text-muted">No achievements initialized.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. System Settings Panel -->
+  <div class="details-panel glass admin-settings-panel hide" id="admin-settings-panel">
+    <div class="panel-header">
+      <h3><i class="fas fa-cogs text-primary"></i> System Settings</h3>
+      <p class="text-muted" style="font-size: 0.85rem;">Administrator database management utilities and technical system information.</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
+      <!-- Database Management Actions -->
+      <div class="glass" style="padding: 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default);">
+        <h4 style="margin-top:0; margin-bottom:12px;"><i class="fas fa-database text-accent"></i> Data Operations</h4>
+        <p class="text-muted" style="font-size:0.85rem; margin-bottom:20px;">Use the following operators to populate mock entries or wipe system storage records.</p>
+        
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <button id="admin-settings-seed-btn" class="btn btn-secondary btn-block" style="justify-content:center;"><i class="fas fa-seedling"></i> Seed Demo Data</button>
+          <button id="admin-settings-reset-game-btn" class="btn btn-warning btn-block" style="justify-content:center;"><i class="fas fa-history"></i> Reset Game Data</button>
+          <button id="admin-settings-clear-db-btn" class="btn btn-danger btn-block" style="justify-content:center;"><i class="fas fa-trash-alt"></i> Reset Database</button>
+        </div>
+      </div>
+      
+      <!-- System Info Logs -->
+      <div class="glass" style="padding: 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default);">
+        <h4 style="margin-top:0; margin-bottom:12px;"><i class="fas fa-info-circle text-info"></i> System Information</h4>
+        <p class="text-muted" style="font-size:0.85rem; margin-bottom:15px;">Live technical overview stats for the GameVerse environment.</p>
+        
+        <div style="font-size:0.85rem; line-height:1.6;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
+            <span class="text-muted">Operating System:</span>
+            <span>Windows (PC)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
+            <span class="text-muted">Framework:</span>
+            <span>HTML5 / Vanilla ES6 Modules</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
+            <span class="text-muted">Storage Engine:</span>
+            <span>HTML5 LocalStorage API</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
+            <span class="text-muted">Users Storage Size:</span>
+            <span id="admin-sys-users-size">0 bytes</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
+            <span class="text-muted">Matches Storage Size:</span>
+            <span id="admin-sys-matches-size">0 bytes</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding-bottom:4px;">
+            <span class="text-muted">Admin Log Storage Size:</span>
+            <span id="admin-sys-adminmatches-size">0 bytes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin User Detail View Modal (Embedded) -->
+<div id="admin-user-modal" class="modal-backdrop hide">
+  <div class="modal-content glass">
+    <button class="modal-close" id="admin-user-modal-close">&times;</button>
+    <div class="modal-header">
+      <h3>User <span class="text-gradient">Details Profile</span></h3>
+      <p>Inspect comprehensive data logs for this user account.</p>
+    </div>
+    <div class="admin-user-profile-details" id="admin-user-details-body">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+</div>

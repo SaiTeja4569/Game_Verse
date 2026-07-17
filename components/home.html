@@ -1,0 +1,207 @@
+<section class="hero-section text-center">
+  <div class="hero-content">
+    <span class="hero-badge"><i class="fas fa-gamepad"></i> Next-Gen Browser Gaming</span>
+    <h1 class="hero-title">Welcome to <span class="text-gradient animate-pulse">GameVerse</span></h1>
+    <p class="hero-subtitle">"Play &bull; Compete &bull; Rise"</p>
+    <p class="hero-description max-w-xl mx-auto">
+      Experience classic browser games reimagined. Challenge perfect AI, compete for ranks, track your statistics, and unlock epic achievements on a modern, ultra-responsive gaming interface.
+    </p>
+    <div class="hero-buttons">
+      <a href="#/games" class="btn btn-primary btn-lg">
+        <i class="fas fa-play"></i> Play Now
+      </a>
+      <button class="btn btn-outline btn-lg guest-only" id="hero-register-btn">
+        <i class="fas fa-user-plus"></i> Join Platform
+      </button>
+      <a href="#/dashboard" class="btn btn-outline btn-lg auth-only player-only">
+        <i class="fas fa-columns"></i> Go to Dashboard
+      </a>
+      <a href="#/admin" class="btn btn-outline btn-lg auth-only admin-only">
+        <i class="fas fa-user-shield"></i> Go to Admin Panel
+      </a>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+</section>
+
+<!-- Admin Welcome Panel -->
+<section class="section admin-only glass text-center hide" style="margin-top: 20px; padding: 40px 20px; border-radius: var(--border-radius-md); border: 1px solid var(--card-border-default);">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <span class="hero-badge" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-color); border: 1px solid rgba(168, 85, 247, 0.4);"><i class="fas fa-user-shield"></i> Administrator Session</span>
+    <h2 style="margin-top: 15px;">Welcome to the Control Panel, <span class="text-gradient font-bold" id="admin-welcome-name">Admin</span></h2>
+    <p class="text-muted" style="margin-bottom: 25px;">You are currently logged in with full administrative privileges. Use the shortcuts below to configure registry settings, run game tests, or check global match statistics.</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+      <a href="#/admin" class="btn btn-primary" style="padding: 12px;"><i class="fas fa-user-shield"></i> Open Admin Panel</a>
+      <a href="#/games" class="btn btn-secondary" style="padding: 12px;"><i class="fas fa-flask"></i> Test Play Games</a>
+      <a href="#/profile" class="btn btn-outline" style="padding: 12px;"><i class="fas fa-user-cog"></i> Admin Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Games Section -->
+<section class="section">
+  <div class="section-header text-center">
+    <span class="section-tag">Featured Titles</span>
+    <h2>Explore the <span class="text-gradient">Games</span></h2>
+    <p>Choose from our top classic selections updated with modern gaming features.</p>
+  </div>
+  
+  <div class="games-grid">
+    <!-- Tic Tac Toe Card -->
+    <div class="game-card glass">
+      <div class="game-card-icon text-primary">
+        <i class="fas fa-hashtag"></i>
+      </div>
+      <h3>Tic Tac Toe</h3>
+      <div class="game-card-tags">
+        <span>PvP</span>
+        <span>AI Difficulty</span>
+        <span>Minimax AI</span>
+      </div>
+      <p>Challenge a friend in local multiplayer or go toe-to-toe with our unbeatable Minimax AI. Track your moves and review match data.</p>
+      <a href="#/games/tic_tac_toe" class="btn btn-secondary btn-block">
+        <i class="fas fa-play-circle"></i> Play Game
+      </a>
+    </div>
+
+    <!-- Rock Paper Scissors Card -->
+    <div class="game-card glass">
+      <div class="game-card-icon text-accent">
+        <i class="fas fa-hand-rock"></i>
+      </div>
+      <h3>Rock Paper Scissors</h3>
+      <div class="game-card-tags">
+        <span>Strategy</span>
+        <span>Best of 3/5</span>
+        <span>Pattern AI</span>
+      </div>
+      <p>Play against the computer in customizable series. Beware the Hard difficulty: the AI analyzes your past selections to predict your moves!</p>
+      <a href="#/games/rock_paper_scissors" class="btn btn-accent btn-block">
+        <i class="fas fa-play-circle"></i> Play Game
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Grid Section -->
+<section class="section stats-highlight-section glass">
+  <div class="stats-grid">
+    <div class="stat-item text-center">
+      <span class="stat-number text-gradient" id="home-stat-games">0</span>
+      <span class="stat-label">Total Matches Played</span>
+    </div>
+    <div class="stat-item text-center">
+      <span class="stat-number text-gradient" id="home-stat-users">0</span>
+      <span class="stat-label">Registered Players</span>
+    </div>
+    <div class="stat-item text-center">
+      <span class="stat-number text-gradient" id="home-stat-active">0</span>
+      <span class="stat-label">Active Users Today</span>
+    </div>
+    <div class="stat-item text-center">
+      <span class="stat-number text-gradient" id="home-stat-achievements">0</span>
+      <span class="stat-label">Achievements Unlocked</span>
+    </div>
+  </div>
+</section>
+
+<!-- Features Grid Section -->
+<section class="section">
+  <div class="section-header text-center">
+    <span class="section-tag">Platform Features</span>
+    <h2>Why Choose <span class="text-gradient">GameVerse</span></h2>
+    <p>A web gaming portal built with industry-grade software practices and premium UX.</p>
+  </div>
+  
+  <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-brain text-primary"></i></div>
+      <h4>Advanced AI Opponents</h4>
+      <p>Challenge perfect Minimax AI or adaptive probability bots that learn from your play patterns in real-time.</p>
+    </div>
+    
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-chart-bar text-accent"></i></div>
+      <h4>Player Statistics</h4>
+      <p>Track your wins, losses, draws, streaks, and win percentages automatically calculated in your private panel.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-trophy text-warning"></i></div>
+      <h4>Achievements</h4>
+      <p>Unlock premium trophies and rank milestones. Build and display your gaming resume on your profile.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-crown text-success"></i></div>
+      <h4>Leaderboards</h4>
+      <p>Compete for the top spot. Points-based rankings place the finest players on our dynamic 3-tier podium.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-history text-info"></i></div>
+      <h4>Match History</h4>
+      <p>Browse full history logs. Filter by game type or outcome, and sort rounds to review past plays.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-user-circle text-primary"></i></div>
+      <h4>User Profiles</h4>
+      <p>Personalize your gamer identity. Update credentials and choose from a custom set of avatar illustrations.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-adjust text-accent"></i></div>
+      <h4>Dark & Light Theme</h4>
+      <p>Toggle high-contrast themes easily. Optimized with smooth gradients to keep gaming comfortable in all conditions.</p>
+    </div>
+
+    <div class="feature-card glass">
+      <div class="feature-icon"><i class="fas fa-server text-success"></i></div>
+      <h4>Flask & MySQL Ready</h4>
+      <p>Engineered with clean architectural abstraction layers. Seamlessly prepared to plug in a back-end REST API.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Games Section -->
+<section class="section">
+  <div class="section-header text-center">
+    <span class="section-tag">Arcade Roadmap</span>
+    <h2>🚀 Upcoming <span class="text-gradient">Games</span></h2>
+    <p>Fresh classic titles are currently in development to bring new challenges to the arcade.</p>
+  </div>
+  
+  <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto;">
+    <!-- Chess Card -->
+    <div class="game-card glass text-center" style="padding: 30px; position: relative;">
+      <span class="badge badge-accent" style="position: absolute; top: 15px; right: 15px; background: rgba(6, 182, 212, 0.2); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.4); padding: 4px 10px; font-size: 0.75rem; border-radius: 20px; font-weight: bold;">Coming Soon</span>
+      <div class="game-card-icon text-primary" style="font-size: 2.5rem; margin-bottom: 15px;">
+        <i class="fas fa-chess-knight"></i>
+      </div>
+      <h3 style="margin-bottom: 10px;">Chess</h3>
+      <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 0;">Play the ultimate game of kings with customizable chess engines and visual move helpers.</p>
+    </div>
+
+    <!-- Snake Card -->
+    <div class="game-card glass text-center" style="padding: 30px; position: relative;">
+      <span class="badge badge-accent" style="position: absolute; top: 15px; right: 15px; background: rgba(6, 182, 212, 0.2); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.4); padding: 4px 10px; font-size: 0.75rem; border-radius: 20px; font-weight: bold;">Coming Soon</span>
+      <div class="game-card-icon text-success" style="font-size: 2.5rem; margin-bottom: 15px;">
+        <i class="fas fa-bullseye"></i>
+      </div>
+      <h3 style="margin-bottom: 10px;">Snake</h3>
+      <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 0;">Classic retro snake game featuring score tracking, speed levels, and interactive boards.</p>
+    </div>
+
+    <!-- Connect Four Card -->
+    <div class="game-card glass text-center" style="padding: 30px; position: relative;">
+      <span class="badge badge-accent" style="position: absolute; top: 15px; right: 15px; background: rgba(6, 182, 212, 0.2); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.4); padding: 4px 10px; font-size: 0.75rem; border-radius: 20px; font-weight: bold;">Coming Soon</span>
+      <div class="game-card-icon text-warning" style="font-size: 2.5rem; margin-bottom: 15px;">
+        <i class="fas fa-circle-nodes"></i>
+      </div>
+      <h3 style="margin-bottom: 10px;">Connect Four</h3>
+      <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 0;">Drop gravity checkers in columns to line up four. Will support local PvP and heuristic computer bots.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+<nav class="navbar glass">
+  <div class="nav-container">
+    <a href="#/home" class="nav-logo">
+      <span class="logo-icon">🎮</span>
+      <span class="logo-text">Game<span class="text-gradient">Verse</span></span>
+    </a>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#/home" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#/games" class="nav-link"><i class="fas fa-gamepad"></i> Games</a>
+        </li>
+        <li class="nav-item player-only">
+          <a href="#/leaderboard" class="nav-link"><i class="fas fa-trophy"></i> Leaderboard</a>
+        </li>
+        <li class="nav-item auth-only player-only">
+          <a href="#/dashboard" class="nav-link"><i class="fas fa-columns"></i> Dashboard</a>
+        </li>
+        <li class="nav-item auth-only player-only">
+          <a href="#/history" class="nav-link"><i class="fas fa-history"></i> History</a>
+        </li>
+        <li class="nav-item auth-only player-only">
+          <a href="#/profile" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item auth-only admin-only">
+          <a href="#/admin" class="nav-link admin-link"><i class="fas fa-user-shield"></i> Admin</a>
+        </li>
+        <li class="nav-item auth-only admin-only">
+          <a href="#/profile" class="nav-link"><i class="fas fa-user-cog"></i> Admin Profile</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        
+        <button id="nav-login-btn" class="btn btn-primary btn-sm guest-only">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+
+        <div class="user-menu auth-only dropdown">
+          <button class="dropdown-toggle" id="user-dropdown-toggle">
+            <img src="./assets/default-avatar.svg" alt="Avatar" class="nav-avatar" id="nav-user-avatar">
+            <span class="nav-username" id="nav-user-name">Player</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu glass" id="user-dropdown-menu">
+            <a href="#/dashboard" class="dropdown-item player-only"><i class="fas fa-columns"></i> Dashboard</a>
+            <a href="#/admin" class="dropdown-item admin-only"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+            <a href="#/profile" class="dropdown-item player-only"><i class="fas fa-user-cog"></i> Settings</a>
+            <a href="#/profile" class="dropdown-item admin-only"><i class="fas fa-user-cog"></i> Admin Profile</a>
+            <hr class="dropdown-divider">
+            <button id="nav-logout-btn" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,254 @@
+<div class="profile-layout" id="player-profile-view">
+  <div class="profile-sidebar glass">
+    <div class="profile-card-header text-center">
+      <div class="user-large-avatar-container">
+        <img src="./assets/default-avatar.svg" alt="Avatar" class="profile-main-avatar" id="profile-user-avatar">
+      </div>
+      <h3 id="profile-display-username">Player</h3>
+      <p class="text-gradient font-bold" id="profile-display-rank-tier">Rookie</p>
+      <p class="text-muted" style="font-size: 0.85rem;"><i class="far fa-calendar-alt"></i> Joined: <span id="profile-joined-date">N/A</span></p>
+    </div>
+    <hr class="panel-divider">
+    
+    <div class="profile-quick-stats">
+      <div class="profile-stat-row">
+        <span>Games Played:</span>
+        <strong id="profile-stat-games">0</strong>
+      </div>
+      <div class="profile-stat-row text-success">
+        <span>Wins:</span>
+        <strong id="profile-stat-wins">0</strong>
+      </div>
+      <div class="profile-stat-row text-danger">
+        <span>Losses:</span>
+        <strong id="profile-stat-losses">0</strong>
+      </div>
+      <div class="profile-stat-row text-warning">
+        <span>Draws:</span>
+        <strong id="profile-stat-draws">0</strong>
+      </div>
+      <div class="profile-stat-row text-secondary">
+        <span>Win Ratio:</span>
+        <strong id="profile-stat-ratio">0%</strong>
+      </div>
+      <div class="profile-stat-row text-accent">
+        <span>Favorite Game:</span>
+        <strong id="profile-stat-fav">None</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-main-content">
+    <!-- Tab Controls -->
+    <div class="profile-tabs glass">
+      <button class="profile-tab-btn active" data-tab="achievements-tab" id="profile-btn-achievements"><i class="fas fa-award"></i> My Badges</button>
+      <button class="profile-tab-btn" data-tab="settings-tab"><i class="fas fa-user-edit"></i> Edit Profile</button>
+      <button class="profile-tab-btn" data-tab="security-tab"><i class="fas fa-key"></i> Security</button>
+    </div>
+
+    <!-- Achievements Panel -->
+    <div class="profile-panel glass active" id="achievements-tab">
+      <div class="panel-title-bar">
+        <h3><i class="fas fa-award text-accent"></i> Achievements Showroom</h3>
+        <p class="text-muted" style="font-size: 0.9rem;">Show off your skills! Unlock trophies by completing platform tasks.</p>
+      </div>
+      <div class="achievements-grid" id="profile-full-achievements-list">
+        <!-- Rendered dynamically in app.js -->
+      </div>
+    </div>
+
+    <!-- Edit Profile Settings Panel -->
+    <div class="profile-panel glass" id="settings-tab">
+      <h3><i class="fas fa-user-edit text-primary"></i> Account Information</h3>
+      <form id="edit-profile-form" class="profile-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="profile-username"><i class="fas fa-user"></i> Username</label>
+            <input type="text" id="profile-username" required minlength="3" maxlength="15">
+          </div>
+          <div class="form-group">
+            <label for="profile-email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="profile-email" required>
+          </div>
+        </div>
+        
+        <!-- Avatar Picker in profile -->
+        <div class="form-group">
+          <label><i class="fas fa-user-circle"></i> Change Profile Avatar</label>
+          <div class="avatar-picker" id="profile-avatar-picker">
+            <div class="avatar-option" data-avatar="1">
+              <img src="./assets/avatars/avatar1.svg" alt="Avatar 1">
+            </div>
+            <div class="avatar-option" data-avatar="2">
+              <img src="./assets/avatars/avatar2.svg" alt="Avatar 2">
+            </div>
+            <div class="avatar-option" data-avatar="3">
+              <img src="./assets/avatars/avatar3.svg" alt="Avatar 3">
+            </div>
+            <div class="avatar-option" data-avatar="4">
+              <img src="./assets/avatars/avatar4.svg" alt="Avatar 4">
+            </div>
+            <div class="avatar-option" data-avatar="5">
+              <img src="./assets/avatars/avatar5.svg" alt="Avatar 5">
+            </div>
+            <div class="avatar-option" data-avatar="6">
+              <img src="./assets/avatars/avatar6.svg" alt="Avatar 6">
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+      </form>
+    </div>
+
+    <!-- Security Settings Panel -->
+    <div class="profile-panel glass" id="security-tab">
+      <h3><i class="fas fa-key text-danger"></i> Update Password</h3>
+      <form id="change-password-form" class="profile-form">
+        <div class="form-group">
+          <label for="security-old-password"><i class="fas fa-lock-open"></i> Current Password</label>
+          <input type="password" id="security-old-password" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="security-new-password"><i class="fas fa-lock"></i> New Password</label>
+            <input type="password" id="security-new-password" placeholder="Min. 6 characters" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="security-confirm-password"><i class="fas fa-shield-alt"></i> Confirm New Password</label>
+            <input type="password" id="security-confirm-password" placeholder="Re-type new password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger"><i class="fas fa-key"></i> Change Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Profile View Layout -->
+<div class="profile-layout hide" id="admin-profile-view">
+  <div class="profile-sidebar glass" style="border: 1px solid var(--glass-border); padding: 30px; border-radius: var(--border-radius-md);">
+    <div class="profile-card-header text-center">
+      <div class="user-large-avatar-container">
+        <img src="./assets/default-avatar.svg" alt="Avatar" class="profile-main-avatar" id="admin-profile-user-avatar">
+      </div>
+      <h3 id="admin-profile-display-username">Admin</h3>
+      <p class="text-gradient font-bold" style="color: gold; text-shadow: 0 0 2px rgba(255, 215, 0, 0.2);"><i class="fas fa-user-shield"></i> Administrator</p>
+      <p class="text-muted" style="font-size: 0.85rem;"><i class="far fa-calendar-alt"></i> Joined: <span id="admin-profile-joined-date">N/A</span></p>
+    </div>
+    <hr class="panel-divider">
+    
+    <div class="profile-quick-stats">
+      <div class="profile-stat-row">
+        <span>Role:</span>
+        <strong style="color:gold;">Administrator</strong>
+      </div>
+      <div class="profile-stat-row">
+        <span>System Access:</span>
+        <strong class="text-success">Full</strong>
+      </div>
+      <div class="profile-stat-row">
+        <span>Players Managed:</span>
+        <strong id="admin-profile-stat-players">0</strong>
+      </div>
+      <div class="profile-stat-row">
+        <span>Matches Reviewed:</span>
+        <strong id="admin-profile-stat-matches">0</strong>
+      </div>
+      <div class="profile-stat-row text-danger">
+        <span>Disabled Accounts:</span>
+        <strong id="admin-profile-stat-disabled">0</strong>
+      </div>
+      <div class="profile-stat-row text-warning">
+        <span>Deleted Accounts:</span>
+        <strong id="admin-profile-stat-deleted">0</strong>
+      </div>
+      <div class="profile-stat-row text-primary">
+        <span>Demo Data Seeded:</span>
+        <strong id="admin-profile-stat-seeded">0</strong>
+      </div>
+      <div class="profile-stat-row text-accent">
+        <span>Database Resets:</span>
+        <strong id="admin-profile-stat-resets">0</strong>
+      </div>
+      <div class="profile-stat-row" style="flex-direction:column; gap:4px; align-items:flex-start;">
+        <span>Last Login:</span>
+        <strong style="font-size:0.8rem; word-break:break-all;" id="admin-profile-stat-last-login">N/A</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-main-content">
+    <!-- Tab Controls -->
+    <div class="profile-tabs glass">
+      <button class="profile-tab-btn active" data-tab="admin-settings-tab"><i class="fas fa-user-edit"></i> Edit Profile</button>
+      <button class="profile-tab-btn" data-tab="admin-security-tab"><i class="fas fa-key"></i> Security</button>
+    </div>
+
+    <!-- Edit Profile Settings Panel -->
+    <div class="profile-panel glass active" id="admin-settings-tab">
+      <h3><i class="fas fa-user-edit text-primary"></i> Admin Account Information</h3>
+      <form id="admin-edit-profile-form" class="profile-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-profile-username"><i class="fas fa-user"></i> Username</label>
+            <input type="text" id="admin-profile-username" required minlength="3" maxlength="15">
+          </div>
+          <div class="form-group">
+            <label for="admin-profile-email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="admin-profile-email" required>
+          </div>
+        </div>
+        
+        <!-- Avatar Picker in profile -->
+        <div class="form-group">
+          <label><i class="fas fa-user-circle"></i> Change Profile Avatar</label>
+          <div class="avatar-picker" id="admin-profile-avatar-picker">
+            <div class="avatar-option" data-avatar="1">
+              <img src="./assets/avatars/avatar1.svg" alt="Avatar 1">
+            </div>
+            <div class="avatar-option" data-avatar="2">
+              <img src="./assets/avatars/avatar2.svg" alt="Avatar 2">
+            </div>
+            <div class="avatar-option" data-avatar="3">
+              <img src="./assets/avatars/avatar3.svg" alt="Avatar 3">
+            </div>
+            <div class="avatar-option" data-avatar="4">
+              <img src="./assets/avatars/avatar4.svg" alt="Avatar 4">
+            </div>
+            <div class="avatar-option" data-avatar="5">
+              <img src="./assets/avatars/avatar5.svg" alt="Avatar 5">
+            </div>
+            <div class="avatar-option" data-avatar="6">
+              <img src="./assets/avatars/avatar6.svg" alt="Avatar 6">
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+      </form>
+    </div>
+
+    <!-- Security Settings Panel -->
+    <div class="profile-panel glass" id="admin-security-tab">
+      <h3><i class="fas fa-key text-danger"></i> Update Password</h3>
+      <form id="admin-change-password-form" class="profile-form">
+        <div class="form-group">
+          <label for="admin-security-old-password"><i class="fas fa-lock-open"></i> Current Password</label>
+          <input type="password" id="admin-security-old-password" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-security-new-password"><i class="fas fa-lock"></i> New Password</label>
+            <input type="password" id="admin-security-new-password" placeholder="Min. 6 characters" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="admin-security-confirm-password"><i class="fas fa-shield-alt"></i> Confirm New Password</label>
+            <input type="password" id="admin-security-confirm-password" placeholder="Re-type new password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger"><i class="fas fa-key"></i> Change Password</button>
+      </form>
+    </div>
+  </div>
+</div>
