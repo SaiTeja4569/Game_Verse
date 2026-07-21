@@ -51,7 +51,7 @@ export const ProfileController = {
         // Fetch System Stats for Sidebar
         const allUsers = await GameVerseDB.getAllUsers();
         const allMatches = await GameVerseDB.getAllMatches();
-        const adminMeta = JSON.parse(localStorage.getItem("gv_admin_meta") || "{}");
+        const adminMeta = await GameVerseDB.getAdminMeta();
 
         const lastLoginDate = adminMeta.lastLogin 
           ? new Date(adminMeta.lastLogin).toLocaleDateString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }) 

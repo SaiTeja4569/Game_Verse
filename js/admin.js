@@ -26,7 +26,7 @@ export const AdminController = {
       this.matches = await GameVerseDB.getAllMatches();
 
       // 1. Render Overview
-      this.renderOverview(this.users, this.matches);
+      await this.renderOverview(this.users, this.matches);
 
       // 2. Render User Registry
       this.renderUsersTable();
@@ -50,7 +50,7 @@ export const AdminController = {
     }
   },
 
-  renderOverview(allUsers, allMatches) {
+  async renderOverview(allUsers, allMatches) {
     // 1. Total Players (excluding Admins)
     const statUsers = document.getElementById("admin-stat-users");
     if (statUsers) statUsers.textContent = allUsers.filter(u => !u.isAdmin).length;
@@ -111,7 +111,7 @@ export const AdminController = {
     // 9. System Administrators Table rendering
     const adminListContainer = document.getElementById("admin-overview-admins-list");
     if (adminListContainer) {
-      const adminMeta = JSON.parse(localStorage.getItem("gv_admin_meta") || "{}");
+      const adminMeta = await GameVerseDB.getAdminMeta();
       const admins = allUsers.filter(u => u.isAdmin);
       adminListContainer.innerHTML = admins.map(adm => {
         const dateStr = adm.joinedDate
@@ -591,9 +591,9 @@ export const AdminController = {
     const matchesSizeElem = document.getElementById("admin-sys-matches-size");
     const adminMatchesSizeElem = document.getElementById("admin-sys-adminmatches-size");
 
-    const usersRaw = localStorage.getItem("gv_users") || "";
-    const matchesRaw = localStorage.getItem("gv_matches") || "";
-    const adminMatchesRaw = localStorage.getItem("gv_admin_matches") || "";
+    const usersRaw = JSON.stringify(this.users || []);
+    const matchesRaw = JSON.stringify((this.matches || []).filter(m => !m.isAdminMatch));
+    const adminMatchesRaw = JSON.stringify((this.matches || []).filter(m => m.isAdminMatch));
 
     if (usersSizeElem) usersSizeElem.textContent = this.formatBytes(new Blob([usersRaw]).size);
     if (matchesSizeElem) matchesSizeElem.textContent = this.formatBytes(new Blob([matchesRaw]).size);

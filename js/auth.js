@@ -14,9 +14,9 @@ export const AuthManager = {
     this.bindEvents();
   },
 
-  async login(username, password, remember = false) {
+  async login(email, password, remember = false) {
     try {
-      const user = await GameVerseDB.login(username, password);
+      const user = await GameVerseDB.login(email, password);
       this.currentUser = user;
       await GameVerseDB.setCurrentUser(user, remember);
       this.updateAuthUI();
@@ -188,10 +188,10 @@ export const AuthManager = {
     document.addEventListener("submit", (e) => {
       if (e.target.id === "login-form") {
         e.preventDefault();
-        const usernameInput = document.getElementById("login-username");
+        const emailInput = document.getElementById("login-email");
         const passwordInput = document.getElementById("login-password");
-        if (usernameInput && passwordInput) {
-          this.login(usernameInput.value.trim(), passwordInput.value, true);
+        if (emailInput && passwordInput) {
+          this.login(emailInput.value.trim(), passwordInput.value, true);
         }
       }
 
