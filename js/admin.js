@@ -114,17 +114,17 @@ export const AdminController = {
       const adminMeta = JSON.parse(localStorage.getItem("gv_admin_meta") || "{}");
       const admins = allUsers.filter(u => u.isAdmin);
       adminListContainer.innerHTML = admins.map(adm => {
-        const dateStr = adm.joinedDate 
+        const dateStr = adm.joinedDate
           ? new Date(adm.joinedDate).toLocaleDateString([], { year: "numeric", month: "short", day: "numeric" })
           : "N/A";
-        const lastLoginDate = adminMeta.lastLogin 
-          ? new Date(adminMeta.lastLogin).toLocaleDateString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }) 
+        const lastLoginDate = adminMeta.lastLogin
+          ? new Date(adminMeta.lastLogin).toLocaleDateString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })
           : "N/A";
         return `
           <tr>
             <td>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <img src="./assets/avatars/avatar${adm.avatar || 1}.svg" style="width:24px; height:24px; border-radius:50%;" onerror="this.src='./assets/default-avatar.svg'">
+              <div class="admin-table-user-flex">
+                <img src="./assets/avatars/avatar${adm.avatar || 1}.svg" class="admin-avatar-small" onerror="this.src='./assets/default-avatar.svg'">
                 <span class="font-bold text-gradient" style="color: gold; text-shadow: 0 0 2px rgba(255, 215, 0, 0.2);">${adm.username}</span>
               </div>
             </td>
@@ -133,7 +133,7 @@ export const AdminController = {
             <td class="text-center"><span class="badge badge-success">Full</span></td>
             <td class="text-center"><span class="badge badge-info">Active</span></td>
             <td class="text-center">${dateStr}</td>
-            <td class="text-right text-muted" style="font-size: 0.8rem;">${lastLoginDate}</td>
+            <td class="text-right text-muted admin-font-small">${lastLoginDate}</td>
           </tr>
         `;
       }).join("");
@@ -145,7 +145,7 @@ export const AdminController = {
       const sortedUsers = allUsers.filter(u => !u.isAdmin)
         .sort((a, b) => new Date(b.joinedDate) - new Date(a.joinedDate))
         .slice(0, 5);
-      
+
       if (sortedUsers.length === 0) {
         newUsersContainer.innerHTML = `<tr><td colspan="3" class="text-center text-muted">No users registered yet.</td></tr>`;
       } else {
@@ -155,8 +155,8 @@ export const AdminController = {
           return `
             <tr>
               <td>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <img src="./assets/avatars/avatar${u.avatar || 1}.svg" class="nav-avatar" style="width:22px; height:22px;" onerror="this.src='./assets/default-avatar.svg'">
+                <div class="admin-table-user-flex">
+                  <img src="./assets/avatars/avatar${u.avatar || 1}.svg" class="nav-avatar admin-avatar-xs" onerror="this.src='./assets/default-avatar.svg'">
                   <strong>${u.username}</strong>
                 </div>
               </td>
@@ -174,7 +174,7 @@ export const AdminController = {
       const sortedMatches = [...allMatches]
         .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
         .slice(0, 5);
-      
+
       const userMap = new Map(allUsers.map(u => [u.id, u.username]));
 
       if (sortedMatches.length === 0) {
@@ -192,7 +192,7 @@ export const AdminController = {
               <td><strong>${playerName}</strong></td>
               <td>${m.game}</td>
               <td class="${resultClass} font-bold">${m.result}</td>
-              <td class="text-right text-muted" style="font-size:0.75rem;">${dateStr}</td>
+              <td class="text-right text-muted admin-font-xs">${dateStr}</td>
             </tr>
           `;
         }).join("");
@@ -240,7 +240,7 @@ export const AdminController = {
         if (u.isAdmin) {
           statusLabel = `<span class="badge badge-accent">Admin</span>`;
         } else {
-          statusLabel = u.isDisabled 
+          statusLabel = u.isDisabled
             ? `<span class="badge badge-danger">Disabled</span>`
             : `<span class="badge badge-success">Active</span>`;
         }
@@ -249,12 +249,12 @@ export const AdminController = {
         const statusBtnClass = u.isDisabled ? "btn-outline" : "btn-warning";
 
         const viewBtn = `<button class="btn btn-outline btn-xs btn-view-details" data-id="${u.id}"><i class="fas fa-eye"></i> View</button>`;
-        
+
         // Admins cannot be deleted/disabled
         const statusBtn = u.isAdmin
           ? `<button class="btn btn-outline btn-xs" disabled style="opacity: 0.5; cursor: not-allowed;">Disable</button>`
           : `<button class="btn ${statusBtnClass} btn-xs btn-toggle-status" data-id="${u.id}" data-disabled="${u.isDisabled}">${statusActionText}</button>`;
-          
+
         const deleteBtn = u.isAdmin
           ? `<button class="btn btn-danger btn-xs" disabled style="opacity: 0.5; cursor: not-allowed;"><i class="fas fa-trash-alt"></i> Delete</button>`
           : `<button class="btn btn-danger btn-xs btn-delete-user" data-id="${u.id}"><i class="fas fa-trash-alt"></i> Delete</button>`;
@@ -262,18 +262,35 @@ export const AdminController = {
         return `
           <tr>
             <td>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <img src="./assets/avatars/avatar${u.avatar || 1}.svg" class="nav-avatar" style="width:26px; height:26px;" onerror="this.src='./assets/default-avatar.svg'">
+              <span class="card-label"><i class="fa-solid fa-user"></i> Player</span>
+              <div class="admin-table-user-flex">
+                <img src="./assets/avatars/avatar${u.avatar || 1}.svg" class="nav-avatar admin-avatar-md" onerror="this.src='./assets/default-avatar.svg'">
                 <strong>${u.username}</strong>
               </div>
             </td>
-            <td>${u.email}</td>
-            <td class="text-center">${joinedDate}</td>
-            <td class="text-center">${u.stats?.gamesPlayed || 0}</td>
-            <td class="text-center text-success">${u.stats?.wins || 0}</td>
-            <td class="text-center">${statusLabel}</td>
+            <td>
+              <span class="card-label"><i class="fa-solid fa-envelope"></i> Email</span>
+              ${u.email}
+            </td>
+            <td class="text-center">
+              <span class="card-label"><i class="fa-solid fa-calendar-alt"></i> Joined Date</span>
+              ${joinedDate}
+            </td>
+            <td class="text-center">
+              <span class="card-label"><i class="fa-solid fa-bullseye"></i> Matches</span>
+              ${u.stats?.gamesPlayed || 0}
+            </td>
+            <td class="text-center text-success">
+              <span class="card-label"><i class="fa-solid fa-medal"></i> Wins</span>
+              ${u.stats?.wins || 0}
+            </td>
+            <td class="text-center">
+              <span class="card-label"><i class="fa-solid fa-check-circle"></i> Status</span>
+              ${statusLabel}
+            </td>
             <td class="text-right">
-              <div style="display:flex; gap:5px; justify-content:flex-end;">
+              <span class="card-label"><i class="fa-solid fa-user-shield"></i> Actions</span>
+              <div class="admin-table-actions-flex">
                 ${viewBtn}
                 ${statusBtn}
                 ${deleteBtn}
@@ -352,11 +369,26 @@ export const AdminController = {
 
           return `
             <tr>
-              <td><strong>${playerName}</strong></td>
-              <td><i class="fas ${icon} ${colorClass}" style="margin-right: 8px;"></i>${m.game}</td>
-              <td class="${resultClass} font-bold">${m.result}</td>
-              <td><span class="badge ${diffClass}">${m.difficulty || "Easy"}</span></td>
-              <td>${dateStr}</td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-user"></i> Player</span>
+                <strong>${playerName}</strong>
+              </td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-gamepad"></i> Game</span>
+                <span class="admin-game-cell-value"><i class="fas ${icon} ${colorClass}"></i><span>${m.game}</span></span>
+              </td>
+              <td class="${resultClass} font-bold">
+                <span class="card-label"><i class="fa-solid fa-trophy"></i> Result</span>
+                ${m.result}
+              </td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-star"></i> Difficulty</span>
+                <span class="badge ${diffClass}">${m.difficulty || "Easy"}</span>
+              </td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-calendar-alt"></i> Date</span>
+                ${dateStr}
+              </td>
             </tr>
           `;
         }).join("");
@@ -383,17 +415,33 @@ export const AdminController = {
         rowsContainer.innerHTML = rankedPlayers.map((p, idx) => {
           return `
             <tr>
-              <td class="font-bold text-gradient">#${idx + 1}</td>
+              <td class="font-bold text-gradient">
+                <span class="card-label"><i class="fa-solid fa-crown"></i> Rank</span>
+                #${idx + 1}
+              </td>
               <td>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <img src="./assets/avatars/avatar${p.avatar || 1}.svg" class="nav-avatar" style="width:26px; height:26px;" onerror="this.src='./assets/default-avatar.svg'">
+                <span class="card-label"><i class="fa-solid fa-user"></i> Player</span>
+                <div class="admin-table-user-flex">
+                  <img src="./assets/avatars/avatar${p.avatar || 1}.svg" class="nav-avatar admin-avatar-md" onerror="this.src='./assets/default-avatar.svg'">
                   <strong>${p.username}</strong>
                 </div>
               </td>
-              <td class="text-center">${p.gamesPlayed}</td>
-              <td class="text-center text-success">${p.wins}</td>
-              <td class="text-center text-primary font-bold">${p.points} pts</td>
-              <td class="text-center text-secondary">${p.winPercentage}%</td>
+              <td class="text-center">
+                <span class="card-label"><i class="fa-solid fa-gamepad"></i> Matches</span>
+                ${p.gamesPlayed}
+              </td>
+              <td class="text-center text-success">
+                <span class="card-label"><i class="fa-solid fa-medal"></i> Wins</span>
+                ${p.wins}
+              </td>
+              <td class="text-center text-primary font-bold">
+                <span class="card-label"><i class="fa-solid fa-star"></i> Points</span>
+                ${p.points} pts
+              </td>
+              <td class="text-center text-secondary">
+                <span class="card-label"><i class="fa-solid fa-chart-line"></i> Win Rate</span>
+                ${p.winPercentage}%
+              </td>
             </tr>
           `;
         }).join("");
@@ -421,8 +469,8 @@ export const AdminController = {
 
       if (gameNames.length === 0) {
         container.innerHTML = `
-          <div class="text-center text-muted" style="grid-column: 1 / -1; padding: 40px;">
-            <i class="fas fa-chart-bar" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.3;"></i>
+          <div class="text-center text-muted admin-analytics-empty">
+            <i class="fas fa-chart-bar admin-analytics-empty-icon"></i>
             <p>No matches recorded yet. Play games or seed demo data to populate analytics!</p>
           </div>
         `;
@@ -472,18 +520,18 @@ export const AdminController = {
         }
 
         return `
-          <div class="stat-card glass" style="display:flex; flex-direction:column; padding:20px; border-radius:12px; min-height:220px; border:1px solid var(--card-border-default);">
-            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:10px; margin-bottom:15px;">
-              <h4 style="margin:0;"><i class="fas ${icon} ${colorClass}" style="margin-right:8px;"></i>${game}</h4>
-              <span class="badge badge-accent" style="padding: 4px 10px; font-weight: bold; border-radius: 20px;">${winRate}% WR</span>
+          <div class="stat-card glass admin-analytics-card">
+            <div class="admin-analytics-card-header">
+              <h4 class="admin-m-0"><i class="fas ${icon} ${colorClass} admin-mr-sm"></i>${game}</h4>
+              <span class="badge badge-accent admin-badge-pill">${winRate}% WR</span>
             </div>
             
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; font-size:0.9rem;">
+            <div class="admin-analytics-card-grid">
               <div><strong>Games Played:</strong> ${played}</div>
               <div><strong>Wins:</strong> <span class="text-success">${wins}</span></div>
               <div><strong>Losses:</strong> <span class="text-danger">${losses}</span></div>
               <div><strong>Draws:</strong> <span class="text-warning">${draws}</span></div>
-              <div style="grid-column: 1 / -1; margin-top:5px; border-top:1px dashed rgba(255,255,255,0.05); padding-top:8px;">
+              <div class="admin-analytics-card-row-divider">
                 <strong>Global Best Streak:</strong> <span class="text-accent">${globalBestStreak} Wins</span>
               </div>
             </div>
@@ -505,19 +553,29 @@ export const AdminController = {
         const unlockedPlayers = this.users
           .filter(u => u.achievements && u.achievements.some(a => a.id === ach.id))
           .map(u => u.username);
-        
+
         const count = unlockedPlayers.length;
         const playersListStr = count > 0 ? unlockedPlayers.join(", ") : "No players yet";
 
         return `
           <tr>
-            <td style="font-size: 1.5rem; text-align: center;"><i class="fas fa-${ach.icon} ${ach.color}"></i></td>
-            <td>
-              <strong>${ach.title}</strong>
-              <div class="text-muted" style="font-size: 0.8rem; margin-top: 2px;">${ach.desc}</div>
+            <td class="admin-ach-cell">
+              <span class="card-label"><i class="fa-solid fa-trophy"></i> Icon</span>
+              <i class="fas fa-${ach.icon} ${ach.color}"></i>
             </td>
-            <td class="text-center font-bold text-accent">${count} unlock(s)</td>
-            <td class="text-muted" style="font-size: 0.85rem; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${playersListStr}">
+            <td>
+              <span class="card-label"><i class="fa-solid fa-info-circle"></i> Title & Details</span>
+              <div>
+                <strong>${ach.title}</strong>
+                <div class="text-muted admin-ach-desc">${ach.desc}</div>
+              </div>
+            </td>
+            <td class="text-center font-bold text-accent">
+              <span class="card-label"><i class="fa-solid fa-users"></i> Unlocked By</span>
+              ${count} unlock(s)
+            </td>
+            <td class="text-muted admin-ach-players-cell" title="${playersListStr}">
+              <span class="card-label"><i class="fa-solid fa-users"></i> Unlocked Players</span>
               ${playersListStr}
             </td>
           </tr>
@@ -562,69 +620,69 @@ export const AdminController = {
       month: "long",
       day: "numeric"
     });
-    
+
     const winRatio = user.stats?.gamesPlayed > 0 ? Math.round((user.stats.wins / user.stats.gamesPlayed) * 100) : 0;
 
     let achievementsHtml = user.achievements && user.achievements.length > 0
       ? user.achievements.map(a => {
-          const ach = ACHIEVEMENTS.find(ac => ac.id === a.id);
-          const title = ach ? ach.title : a.id;
-          const date = new Date(a.unlockedAt).toLocaleDateString();
-          return `<span class="badge badge-accent" style="margin-right: 5px; margin-bottom: 5px; display: inline-block;">🏆 ${title} (${date})</span>`;
-        }).join("")
+        const ach = ACHIEVEMENTS.find(ac => ac.id === a.id);
+        const title = ach ? ach.title : a.id;
+        const date = new Date(a.unlockedAt).toLocaleDateString();
+        return `<span class="badge badge-accent admin-badge-inline">🏆 ${title} (${date})</span>`;
+      }).join("")
       : '<span class="text-muted">No achievements unlocked.</span>';
 
     detailBody.innerHTML = `
-      <div style="display:flex; gap:16px; align-items:center; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:15px;">
-        <img src="./assets/avatars/avatar${user.avatar || 1}.svg" style="width:60px; height:60px;" onerror="this.src='./assets/default-avatar.svg'">
+      <div class="admin-modal-user-header">
+        <img src="./assets/avatars/avatar${user.avatar || 1}.svg" class="admin-avatar-lg" onerror="this.src='./assets/default-avatar.svg'">
         <div>
-          <h4 style="margin:0 0 4px 0;">${user.username}</h4>
-          <p class="text-muted" style="margin:0 0 2px 0; font-size:0.85rem;">Email: ${user.email}</p>
-          <p class="text-muted" style="margin:0; font-size:0.85rem;">Joined: ${joinedStr}</p>
+          <h4 class="admin-m-0-bottom">${user.username}</h4>
+          <p class="text-muted admin-modal-user-meta">Email: ${user.email}</p>
+          <p class="text-muted admin-modal-user-meta-last">Joined: ${joinedStr}</p>
         </div>
       </div>
       
-      <h5 style="margin-bottom:10px;">Simulation Stats</h5>
-      <div class="stats-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; margin-bottom:20px;">
-        <div class="stat-item text-center glass" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.gamesPlayed || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Played</span>
+      <h5 class="admin-modal-title">Simulation Stats</h5>
+      <div class="stats-grid admin-modal-stats-grid">
+        <div class="stat-item text-center glass admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.gamesPlayed || 0}</strong>
+          <span class="text-muted admin-font-xxs">Played</span>
         </div>
-        <div class="stat-item text-center glass text-success" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.wins || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Wins</span>
+        <div class="stat-item text-center glass text-success admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.wins || 0}</strong>
+          <span class="text-muted admin-font-xxs">Wins</span>
         </div>
-        <div class="stat-item text-center glass text-danger" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.losses || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Losses</span>
+        <div class="stat-item text-center glass text-danger admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.losses || 0}</strong>
+          <span class="text-muted admin-font-xxs">Losses</span>
         </div>
-        <div class="stat-item text-center glass text-warning" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.draws || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Draws</span>
+        <div class="stat-item text-center glass text-warning admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.draws || 0}</strong>
+          <span class="text-muted admin-font-xxs">Draws</span>
         </div>
-        <div class="stat-item text-center glass text-accent" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.streak || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Streak</span>
+        <div class="stat-item text-center glass text-accent admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.streak || 0}</strong>
+          <span class="text-muted admin-font-xxs">Streak</span>
         </div>
-        <div class="stat-item text-center glass text-primary" style="padding:8px 4px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-          <strong style="display:block; font-size:1.1rem;">${user.stats?.points || 0}</strong>
-          <span style="font-size:0.7rem;" class="text-muted">Points</span>
+        <div class="stat-item text-center glass text-primary admin-modal-stat-item">
+          <strong class="admin-modal-stat-value">${user.stats?.points || 0}</strong>
+          <span class="text-muted admin-font-xxs">Points</span>
         </div>
       </div>
 
-      <div style="font-size:0.9rem; margin-bottom:20px;">
-        <p style="margin:0 0 6px 0;"><strong>Win Ratio:</strong> ${winRatio}%</p>
-        <p style="margin:0 0 6px 0;"><strong>Favorite Game:</strong> ${user.stats?.favGame || "None"}</p>
-        <p style="margin:0 0 6px 0;"><strong>Highest Streak:</strong> ${user.stats?.highestStreak || 0}</p>
+      <div class="admin-modal-text-info">
+        <p class="admin-modal-text-info-row"><strong>Win Ratio:</strong> ${winRatio}%</p>
+        <p class="admin-modal-text-info-row"><strong>Favorite Game:</strong> ${user.stats?.favGame || "None"}</p>
+        <p class="admin-modal-text-info-row"><strong>Highest Streak:</strong> ${user.stats?.highestStreak || 0}</p>
       </div>
 
-      <h5 style="margin-bottom:8px;">Trophies Unlocked</h5>
-      <div style="padding:10px; background:rgba(255,255,255,0.02); border-radius:6px; border:1px solid rgba(255,255,255,0.05); font-size:0.85rem; margin-bottom:20px;">
+      <h5 class="admin-modal-title-small">Trophies Unlocked</h5>
+      <div class="admin-modal-achievements-container">
         ${achievementsHtml}
       </div>
 
       <!-- Action Buttons to Reset User stats / achievements -->
-      <div style="display:flex; gap:10px; justify-content:flex-end; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+      <div class="admin-modal-actions-flex">
         <button class="btn btn-warning btn-sm btn-reset-user-stats" data-id="${user.id}"><i class="fas fa-sync-alt"></i> Reset Statistics</button>
         <button class="btn btn-danger btn-sm btn-reset-user-achievements" data-id="${user.id}"><i class="fas fa-award"></i> Reset Achievements</button>
       </div>
@@ -707,7 +765,7 @@ export const AdminController = {
         document.getElementById("admin-user-modal")?.classList.add("hide");
       });
     }
-    
+
     document.addEventListener("click", (e) => {
       if (e.target === document.getElementById("admin-user-modal")) {
         document.getElementById("admin-user-modal")?.classList.add("hide");
@@ -784,10 +842,10 @@ export const AdminController = {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         const targetTab = btn.dataset.tab;
-        
+
         tabBtns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        
+
         document.querySelectorAll(".admin-details .details-panel").forEach(panel => {
           if (panel.id === targetTab) {
             panel.classList.remove("hide");
@@ -816,7 +874,7 @@ export const AdminController = {
           const userId = toggleBtn.dataset.id;
           const currentDisabled = toggleBtn.dataset.disabled === "true";
           const newStatus = !currentDisabled;
-          
+
           try {
             await GameVerseDB.setUserStatus(userId, newStatus);
             ToastManager.show(`User account status updated.`, "info");

@@ -85,11 +85,26 @@ export const HistoryController = {
 
           return `
             <tr>
-              <td><i class="fas ${icon} ${colorClass}" style="margin-right: 8px;"></i><strong>${m.game}</strong></td>
-              <td class="text-center"><span class="${resultClass} font-bold">${m.result}</span></td>
-              <td class="text-center"><span class="badge ${diffClass}">${m.difficulty || "Easy"}</span></td>
-              <td><span style="font-size: 0.9rem;">${m.details || ""}</span></td>
-              <td class="text-center" style="font-size: 0.85rem; color: var(--text-muted);">${dateStr}</td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-gamepad"></i> Game</span>
+                <span class="admin-game-cell-value"><i class="fas ${icon} ${colorClass}"></i><span>${m.game}</span></span>
+              </td>
+              <td class="text-center">
+                <span class="card-label"><i class="fa-solid fa-trophy"></i> Result</span>
+                <span class="${resultClass} font-bold">${m.result}</span>
+              </td>
+              <td class="text-center">
+                <span class="card-label"><i class="fa-solid fa-star"></i> Difficulty</span>
+                <span class="badge ${diffClass}">${m.difficulty || "Easy"}</span>
+              </td>
+              <td>
+                <span class="card-label"><i class="fa-solid fa-info-circle"></i> Details</span>
+                <span style="font-size: 0.9rem;">${m.details || ""}</span>
+              </td>
+              <td class="text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+                <span class="card-label"><i class="fa-solid fa-calendar-days"></i> Date</span>
+                ${dateStr}
+              </td>
             </tr>
           `;
         }).join("");

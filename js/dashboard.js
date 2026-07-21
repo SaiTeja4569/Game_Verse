@@ -167,10 +167,22 @@ export const DashboardController = {
 
               return `
                 <tr>
-                  <td><i class="fas ${icon} ${colorClass}" style="margin-right: 8px;"></i>${m.game}</td>
-                  <td class="${resultClass} font-bold">${m.result}</td>
-                  <td><span class="badge ${diffClass}">${m.difficulty || "Easy"}</span></td>
-                  <td>${dateStr}</td>
+                  <td>
+                    <span class="card-label"><i class="fa-solid fa-gamepad"></i> Game</span>
+                    <span class="admin-game-cell-value"><i class="fas ${icon} ${colorClass}"></i><span>${m.game}</span></span>
+                  </td>
+                  <td class="${resultClass} font-bold">
+                    <span class="card-label"><i class="fa-solid fa-trophy"></i> Result</span>
+                    ${m.result}
+                  </td>
+                  <td>
+                    <span class="card-label"><i class="fa-solid fa-star"></i> Difficulty</span>
+                    <span class="badge ${diffClass}">${m.difficulty || "Easy"}</span>
+                  </td>
+                  <td>
+                    <span class="card-label"><i class="fa-solid fa-calendar-days"></i> Date</span>
+                    ${dateStr}
+                  </td>
                 </tr>
               `;
             })
