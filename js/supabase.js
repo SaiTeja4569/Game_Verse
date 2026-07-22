@@ -431,8 +431,6 @@ export async function sbSetUserStatus(userId, disabled) {
  * Delete a user and cascade delete their matches
  */
 export async function sbDeleteUser(userId) {
-  console.log("NEW DELETE FUNCTION");
-  debugger;
 
   const { data, error } = await supabase.functions.invoke("delete-user", {
     body: {
