@@ -3,7 +3,7 @@ import { withSupabase } from "@supabase/server";
 
 export default {
   fetch: withSupabase(
-    { auth: ["publishable"] },
+    { auth: ["user"] },
     async (req, ctx) => {
       try {
         const { user_id } = await req.json();
