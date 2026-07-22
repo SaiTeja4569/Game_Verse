@@ -412,7 +412,7 @@ export async function sbGetAllUsers() {
 export async function sbSetUserStatus(userId, disabled) {
   const { data, error } = await supabase
     .from('profiles')
-    .update({ 
+    .update({
       is_disabled: disabled
     })
     .eq('id', userId)
@@ -431,15 +431,26 @@ export async function sbSetUserStatus(userId, disabled) {
  * Delete a user and cascade delete their matches
  */
 export async function sbDeleteUser(userId) {
-  const { error } = await supabase
-    .rpc('delete_user', { user_id: userId });
+  console.log("NEW DELETE FUNCTION RUNNING");
+
+  const { data, error } = await supabase.functions.invoke("delete-user", {
+    body: {
+      user_id: userId,
+    },
+  });
 
   if (error) {
-    throw new Error('Failed to delete user account: ' + error.message);
+    throw new Error(error.message);
+  }
+
+  if (data?.error) {
+    throw new Error(data.error);
   }
 
   const adminMeta = await sbGetAdminMeta();
-  adminMeta.deletedAccounts = (adminMeta.deletedAccounts || 0) + 1;
+  adminMeta.deletedAccounts =
+    (adminMeta.deletedAccounts || 0) + 1;
+
   await sbUpdateAdminMeta(adminMeta);
 
   return true;
