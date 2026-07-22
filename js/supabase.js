@@ -412,13 +412,19 @@ export async function sbGetAllUsers() {
 export async function sbSetUserStatus(userId, disabled) {
   const { data, error } = await supabase
     .from('profiles')
-    .update({ is_disabled: disabled })
+    .update({ 
+      is_disabled: disabled
+    })
     .eq('id', userId)
-    .select()
-    .single();
+    .select();
 
-  if (error) throw error;
-  return mapProfileToLocalUser(data);
+  if (error) {
+    throw new Error('Database update failed: ' + error.message);
+  }
+  if (!data || data.length === 0) {
+    throw new Error('Access denied or user profile not found. Ensure you are logged in as an administrator.');
+  }
+  return mapProfileToLocalUser(data[0]);
 }
 
 /**
@@ -426,11 +432,11 @@ export async function sbSetUserStatus(userId, disabled) {
  */
 export async function sbDeleteUser(userId) {
   const { error } = await supabase
-    .from('profiles')
-    .delete()
-    .eq('id', userId);
+    .rpc('delete_user', { user_id: userId });
 
-  if (error) throw error;
+  if (error) {
+    throw new Error('Failed to delete user account: ' + error.message);
+  }
 
   const adminMeta = await sbGetAdminMeta();
   adminMeta.deletedAccounts = (adminMeta.deletedAccounts || 0) + 1;
@@ -443,50 +449,28 @@ export async function sbDeleteUser(userId) {
  * Reset statistics for a user
  */
 export async function sbResetUserStats(userId) {
-  const stats = {
-    gamesPlayed: 0,
-    wins: 0,
-    losses: 0,
-    draws: 0,
-    streak: 0,
-    highestStreak: 0,
-    points: 0,
-    favGame: "None"
-  };
+  const { error } = await supabase
+    .rpc('reset_user_stats', { target_user_id: userId });
 
-  const { data, error } = await supabase
-    .from('profiles')
-    .update({ stats })
-    .eq('id', userId)
-    .select()
-    .single();
+  if (error) {
+    throw new Error('Database reset stats failed: ' + error.message);
+  }
 
-  if (error) throw error;
-
-  // Clear matches for this user
-  const { error: matchesError } = await supabase
-    .from('matches')
-    .delete()
-    .eq('user_id', userId);
-
-  if (matchesError) throw matchesError;
-
-  return mapProfileToLocalUser(data);
+  return await sbGetCurrentUser(userId);
 }
 
 /**
  * Reset achievements for a user
  */
 export async function sbResetUserAchievements(userId) {
-  const { data, error } = await supabase
-    .from('profiles')
-    .update({ achievements: [] })
-    .eq('id', userId)
-    .select()
-    .single();
+  const { error } = await supabase
+    .rpc('reset_user_achievements', { target_user_id: userId });
 
-  if (error) throw error;
-  return mapProfileToLocalUser(data);
+  if (error) {
+    throw new Error('Database reset achievements failed: ' + error.message);
+  }
+
+  return await sbGetCurrentUser(userId);
 }
 
 /**

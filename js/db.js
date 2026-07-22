@@ -252,7 +252,7 @@ export const GameVerseDB = {
 
       return this._asyncResponse(true);
     } catch (err) {
-      return this._asyncResponse(false);
+      return this._asyncResponse(false, true, err.message);
     }
   },
 
@@ -273,7 +273,29 @@ export const GameVerseDB = {
 
       return this._asyncResponse(true);
     } catch (err) {
-      return this._asyncResponse(false);
+      return this._asyncResponse(false, true, err.message);
+    }
+  },
+
+  async resetAllGameStats() {
+    try {
+      const success = await sb.sbResetAllGameStats();
+
+      // Update current session user data if active
+      const session = sessionStorage.getItem("gv_current_user") || localStorage.getItem("gv_remembered_user");
+      if (session) {
+        const parsed = JSON.parse(session);
+        const freshUser = await sb.sbGetCurrentUser(parsed.id);
+        if (freshUser) {
+          const freshStr = JSON.stringify(freshUser);
+          if (sessionStorage.getItem("gv_current_user")) sessionStorage.setItem("gv_current_user", freshStr);
+          if (localStorage.getItem("gv_remembered_user")) localStorage.setItem("gv_remembered_user", freshStr);
+        }
+      }
+
+      return this._asyncResponse(success);
+    } catch (err) {
+      return this._asyncResponse(false, true, err.message);
     }
   },
 
