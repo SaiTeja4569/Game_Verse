@@ -2731,7 +2731,33 @@ input[type="password"]:focus {
   .game-settings-panel button.btn-outline {
     width: 100%;
   }
+
+  /* Prevent Dashboard Header and Action Buttons Overflow on Mobile */
+  .dashboard-header {
+    padding: 20px 15px;
+  }
+
+  .quick-play-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .quick-play-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Prevent Profile Panels and Sidebar Overflow on Mobile */
+  .profile-sidebar {
+    padding: 20px 15px;
+  }
+
+  .profile-panel {
+    padding: 20px 15px;
+  }
 }
+
 
 /* Small Mobile Breakpoint (< 400px) */
 @media (max-width: 399px) {
