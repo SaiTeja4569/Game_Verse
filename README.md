@@ -3,9 +3,16 @@
 ```{=html}
 <p align="center">
 ```
-`<img src="assets/Screenshots/Home_Page.png" alt="GameVerse Home" width="100%">`{=html}
+`<img src="assets/Screenshots/Home_Page.png" alt="GameVerse Banner" width="100%">`{=html}
 ```{=html}
 </p>
+```
+```{=html}
+<h1 align="center">
+```
+🎮 GameVerse
+```{=html}
+</h1>
 ```
 ```{=html}
 <p align="center">
@@ -16,79 +23,101 @@ Rise`</em>`{=html}
 ```{=html}
 </p>
 ```
-```{=html}
-<p align="center">
-```
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)
+![Responsive](https://img.shields.io/badge/Responsive-Mobile%20Ready-success?style=for-the-badge)
 ![Dark
 Mode](https://img.shields.io/badge/Dark_Mode-Supported-blueviolet?style=for-the-badge)
 
-```{=html}
-</p>
-```
+------------------------------------------------------------------------
+
+# 🌐 Live Demo
+
+Replace this with your GitHub Pages URL.
 
 ------------------------------------------------------------------------
 
-## 📖 About
+# 📑 Table of Contents
+
+-   About
+-   Features
+-   Current Games
+-   Screenshots
+-   Tech Stack
+-   Responsive Design
+-   Project Structure
+-   Installation
+-   How to Play
+-   Recent Improvements
+-   Roadmap
+-   Contributing
+-   License
+-   Author
+
+------------------------------------------------------------------------
+
+# 📖 About
 
 GameVerse is a modern browser-based gaming platform built with **HTML5,
-CSS3, and JavaScript**. It combines classic browser games with user
-authentication, personalized dashboards, match history, statistics,
-achievements, responsive layouts, and an administrator control panel.
+CSS3 and JavaScript**.
 
-The application is designed with a scalable architecture so additional
-games and platform features can be added in future releases without
-redesigning the overall system.
+It combines classic browser games with:
+
+-   Authentication
+-   User Dashboard
+-   Admin Dashboard
+-   Leaderboard
+-   Achievements
+-   Match History
+-   Player Statistics
+-   Responsive Design
+-   Dark Mode
+-   Local Storage
+
+The project follows a scalable architecture so additional games can be
+added easily.
 
 ------------------------------------------------------------------------
 
-## ✨ Features
+# ✨ Features
 
-### 👤 User Features
+## 👤 User Features
 
--   Secure Registration & Login
--   Personalized User Dashboard
--   Recent Matches
+-   Secure Registration
+-   Secure Login
+-   Personalized Dashboard
+-   User Profile
+-   Achievement System
 -   Match History
--   Game Statistics
--   Achievement Badges
+-   Recent Matches
+-   Player Statistics
+-   Leaderboard
 -   Difficulty Tracking
 -   Quick Play
--   Light & Dark Theme
--   Responsive UI
+-   Dark Theme
+-   Mobile Responsive UI
+-   Local Storage
 
-### 🛡️ Administrator Features
+## 🛡️ Administrator Features
 
--   Administrator Dashboard
+-   Admin Login
+-   Admin Dashboard
 -   User Management
--   Platform Statistics
--   Match Monitoring
 -   Leaderboard Management
+-   Platform Statistics
 -   Game Analytics
--   Achievement Management
--   System Overview
+-   Achievement Monitoring
+-   Match Monitoring
 
-### 🎮 Current Games
+## 🎮 Current Games
 
--   ❌⭕ Tic Tac Toe
--   ✊✋✌️ Rock Paper Scissors
+  Game                  Status
+  --------------------- --------
+  Tic Tac Toe           ✅
+  Rock Paper Scissors   ✅
 
-> More browser games will be added in future updates.
-
-------------------------------------------------------------------------
-
-## 🛠️ Tech Stack
-
-  Category          Technologies
-  ----------------- -------------------------------
-  Frontend          HTML5, CSS3, JavaScript (ES6)
-  Icons             Font Awesome
-  Storage           Browser Local Storage
-  Version Control   Git & GitHub
-  Editor            Visual Studio Code
+More games coming soon.
 
 ------------------------------------------------------------------------
 
@@ -134,82 +163,108 @@ redesigning the overall system.
 
 ------------------------------------------------------------------------
 
+# 🛠️ Tech Stack
+
+  Category          Technology
+  ----------------- -----------------------
+  Frontend          HTML5
+  Styling           CSS3
+  Language          JavaScript ES6
+  Icons             Font Awesome
+  Storage           Browser Local Storage
+  Version Control   Git & GitHub
+  IDE               Visual Studio Code
+
+------------------------------------------------------------------------
+
 # 📱 Responsive Design
 
 -   Desktop
+-   Laptop
 -   Tablet
 -   Mobile
--   Optimized card layouts
--   Shared responsive components
+-   Responsive Navigation
+-   Responsive Dashboard
+-   Responsive Cards
 
 ------------------------------------------------------------------------
 
 # 📂 Project Structure
 
 ``` text
-Game_Verse/
+GameVerse/
 ├── assets/
-│   └── Screenshots/
 ├── css/
 ├── js/
 ├── games/
 ├── index.html
 ├── README.md
-└── ...
+└── LICENSE
 ```
 
 ------------------------------------------------------------------------
 
-# 🚀 Getting Started
-
-## Clone the repository
+# ⚙️ Installation
 
 ``` bash
 git clone https://github.com/SaiTeja4569/Game_Verse.git
-```
-
-## Open the project
-
-``` bash
 cd Game_Verse
 ```
 
-Open `index.html` directly or use **Live Server** in Visual Studio Code.
+Open **index.html** with Live Server or any browser.
 
 ------------------------------------------------------------------------
 
-# 🎯 Highlights
+# 🎮 How to Play
 
--   Modern Gaming UI
--   Responsive Design
--   Authentication System
--   User & Admin Dashboards
--   Match Tracking
--   Statistics
--   Achievement System
--   Dark Mode
--   Clean Project Structure
--   Scalable Architecture
+1.  Register
+2.  Login
+3.  Select a game
+4.  Play
+5.  Unlock achievements
+6.  Check leaderboard
+7.  View match history
+
+------------------------------------------------------------------------
+
+# 🚀 Recent Improvements
+
+-   Redesigned Dashboard
+-   Improved Mobile Responsiveness
+-   Responsive Navigation
+-   Better Statistics Cards
+-   Improved Profile Page
+-   Enhanced Achievement System
+-   Improved Match History
+-   Fixed Mobile Overflow Issue
+-   Dashboard UI Enhancements
+-   Performance Improvements
 
 ------------------------------------------------------------------------
 
 # 🗺️ Roadmap
 
--   Add more browser games
--   Multiplayer support
--   Global leaderboard
--   Cloud synchronization
--   Tournament mode
--   User profile customization
--   Enhanced AI difficulty
--   Sound effects & animations
+-   Snake Game
+-   Memory Card Game
+-   Racing Game
+-   Multiplayer
+-   Cloud Sync
+-   Tournament Mode
+-   Friends System
+-   AI Difficulty
 
 ------------------------------------------------------------------------
 
 # 🤝 Contributing
 
-Suggestions and improvements are welcome. Feel free to fork the
-repository and submit a pull request.
+Contributions are welcome. Fork the repository and submit a pull
+request.
+
+------------------------------------------------------------------------
+
+# 📄 License
+
+MIT License.
 
 ------------------------------------------------------------------------
 
@@ -221,4 +276,6 @@ GitHub: https://github.com/SaiTeja4569/Game_Verse
 
 ------------------------------------------------------------------------
 
-⭐ If you like this project, consider giving it a star on GitHub!
+# ⭐ Support
+
+If you like this project, please give it a ⭐ on GitHub.
