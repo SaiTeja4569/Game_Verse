@@ -268,11 +268,15 @@ MIT License.
 
 ------------------------------------------------------------------------
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Adepu Saiteja**
 
-GitHub: https://github.com/SaiTeja4569/Game_Verse
+🌐 Live Demo: https://saiteja4569.github.io/Game_Verse/
+
+💻 GitHub: https://github.com/SaiTeja4569
+
+📂 Repository: https://github.com/SaiTeja4569/Game_Verse
 
 ------------------------------------------------------------------------
 
