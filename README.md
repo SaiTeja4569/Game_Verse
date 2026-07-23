@@ -21,9 +21,12 @@
 
 # 🌐 Live Demo
 
-🌐 Live Demo: https://saiteja4569.github.io/Game_Verse/
 
-📂 Repository: https://github.com/SaiTeja4569/Game_Verse
+🌐 Live Demo  : https://saiteja4569.github.io/Game_Verse/
+
+
+📂 Repository : https://github.com/SaiTeja4569/Game_Verse
+
 
 ------------------------------------------------------------------------
 
