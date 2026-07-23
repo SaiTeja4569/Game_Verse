@@ -62,7 +62,6 @@ It combines classic browser games with:
 -   Player Statistics
 -   Responsive Design
 -   Dark Mode
--   Local Storage
 
 The project follows a scalable architecture so additional games can be
 added easily.
@@ -261,7 +260,7 @@ MIT License.
 
 **Adepu Saiteja**
 
-💻 GitHub: https://github.com/SaiTeja4569
+💻 GitHub : https://github.com/SaiTeja4569
 
 ------------------------------------------------------------------------
 
