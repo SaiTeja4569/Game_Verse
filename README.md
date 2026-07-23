@@ -1,28 +1,16 @@
 # 🎮 GameVerse
 
-```{=html}
 <p align="center">
-```
-`<img src="assets/Screenshots/Home_Page.png" alt="GameVerse Banner" width="100%">`{=html}
-```{=html}
+  <img src="assets/Screenshots/Home_Page.png" alt="GameVerse Banner" width="100%">
 </p>
-```
-```{=html}
-<h1 align="center">
-```
-🎮 GameVerse
-```{=html}
-</h1>
-```
-```{=html}
+
+<h1 align="center">🎮 GameVerse</h1>
+
 <p align="center">
-```
-`<strong>`{=html}A Modern Browser-Based Gaming
-Platform`</strong>`{=html}`<br>`{=html} `<em>`{=html}Play • Compete •
-Rise`</em>`{=html}
-```{=html}
+  <strong>A Modern Browser-Based Gaming Platform</strong><br>
+  <em>Play • Compete • Rise</em>
 </p>
-```
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
