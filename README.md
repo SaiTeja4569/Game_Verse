@@ -1,27 +1,29 @@
-# 🎮 GameVerse
-
 <p align="center">
   <img src="assets/Screenshots/Home_Page.png" alt="GameVerse Banner" width="100%">
 </p>
-
-<h1 align="center">🎮 GameVerse</h1>
 
 <p align="center">
   <strong>A Modern Browser-Based Gaming Platform</strong><br>
   <em>Play • Compete • Rise</em>
 </p>
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Responsive-Mobile%20Ready-success?style=for-the-badge)
-![DarkMode](https://img.shields.io/badge/Dark_Mode-Supported-blueviolet?style=for-the-badge)
+<p align="center">
+
+  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+  ![Responsive](https://img.shields.io/badge/Responsive-Mobile%20Ready-success?style=for-the-badge)
+  ![DarkMode](https://img.shields.io/badge/Dark_Mode-Supported-blueviolet?style=for-the-badge)
+
+</p>
 
 ------------------------------------------------------------------------
 
 # 🌐 Live Demo
 
-Replace this with your GitHub Pages URL.
+🌐 Live Demo: https://saiteja4569.github.io/Game_Verse/
+
+📂 Repository: https://github.com/SaiTeja4569/Game_Verse
 
 ------------------------------------------------------------------------
 
@@ -259,11 +261,7 @@ MIT License.
 
 **Adepu Saiteja**
 
-🌐 Live Demo: https://saiteja4569.github.io/Game_Verse/
-
 💻 GitHub: https://github.com/SaiTeja4569
-
-📂 Repository: https://github.com/SaiTeja4569/Game_Verse
 
 ------------------------------------------------------------------------
 
